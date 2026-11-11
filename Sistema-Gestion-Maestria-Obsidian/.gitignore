@@ -1,0 +1,10 @@
+90 - Personal/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.db
+storage/
