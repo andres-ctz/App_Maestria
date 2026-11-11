@@ -8,4 +8,4 @@
 *.sqlite
 *.db
 storage/
-.obsidian
+.obsidian/
