@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/providers/theme-provider'
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
   },
   description:
     'Plataforma de gestión académica, seguimiento tutorial, retención de postulantes y trazabilidad para cursos preparatorios de programas de maestría.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -58,7 +56,6 @@ export default function RootLayout({
             <Toaster richColors position="top-right" />
           </TooltipProvider>
         </ThemeProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

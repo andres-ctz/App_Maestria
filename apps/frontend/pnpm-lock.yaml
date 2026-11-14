@@ -11,9 +11,6 @@ importers:
       '@base-ui/react':
         specifier: ^1.5.0
         version: 1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.14)(date-fns@4.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@vercel/analytics':
-        specifier: 1.6.1
-        version: 1.6.1(next@16.4.3(@babel/core@7.29.7)(@types/node@24.10.4)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -23,9 +20,6 @@ importers:
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      cn:
-        specifier: ^0.5.0
-        version: 0.5.0
       date-fns:
         specifier: ^4.4.0
         version: 4.4.0
@@ -883,32 +877,6 @@ packages:
   '@types/validate-npm-package-name@4.0.2':
     resolution: {integrity: sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==}
 
-  '@vercel/analytics@1.6.1':
-    resolution: {integrity: sha512-oH9He/bEM+6oKlv3chWuOOcp8Y6fo6/PSro8hEkgCW3pu9/OiCXiUpRUogDh3Fs3LH2sosDrx8CxeOLBEE+afg==}
-    peerDependencies:
-      '@remix-run/react': ^2
-      '@sveltejs/kit': ^1 || ^2
-      next: '>= 13'
-      react: ^18 || ^19 || ^19.0.0-rc
-      svelte: '>= 4'
-      vue: ^3
-      vue-router: ^4
-    peerDependenciesMeta:
-      '@remix-run/react':
-        optional: true
-      '@sveltejs/kit':
-        optional: true
-      next:
-        optional: true
-      react:
-        optional: true
-      svelte:
-        optional: true
-      vue:
-        optional: true
-      vue-router:
-        optional: true
-
   accepts@2.0.0:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
     engines: {node: '>= 0.6'}
@@ -1022,11 +990,6 @@ packages:
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
-
-  cn@0.5.0:
-    resolution: {integrity: sha512-JGEixZEpfFXm1P5uXwvEobOFLlHwIWi5v4tjd1ZwfiYmcEilkuD2l+054rvJcYCR1B+uVThHeUbgmNz1FwuxuA==}
-    engines: {node: '>=22'}
-    hasBin: true
 
   code-block-writer@13.0.3:
     resolution: {integrity: sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg==}
@@ -3022,11 +2985,6 @@ snapshots:
 
   '@types/validate-npm-package-name@4.0.2': {}
 
-  '@vercel/analytics@1.6.1(next@16.4.3(@babel/core@7.29.7)(@types/node@24.10.4)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
-    optionalDependencies:
-      next: 16.4.3(@babel/core@7.29.7)(@types/node@24.10.4)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react: 19.2.4
-
   accepts@2.0.0:
     dependencies:
       mime-types: 3.0.2
@@ -3140,8 +3098,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
-
-  cn@0.5.0: {}
 
   code-block-writer@13.0.3: {}
 
