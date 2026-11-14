@@ -10,3 +10,5 @@
 7. Integrar a `main`.
 
 No hacer push directo a `main`. No subir `.env`, tokens, bases locales ni documentos privados.
+
+Todo cambio funcional se documenta en [[Registro de decisiones]] y se refleja en las notas de arquitectura.

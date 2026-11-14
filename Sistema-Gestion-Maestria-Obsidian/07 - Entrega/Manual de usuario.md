@@ -2,9 +2,9 @@
 
 Completar con capturas después de estabilizar la interfaz.
 
-- Administrador: usuarios y configuración autorizada.
-- Coordinador: programas, convocatorias, cursos, postulantes, dashboard y reportes.
-- Tutor: postulantes asignados, contactos y compromisos.
-- Postulante: perfil, inscripción, evidencias y estado.
+- Administrador: usuarios, estructura institucional, configuración, publicación de calificaciones y auditoría global.
+- Coordinador: convocatorias, postulaciones, admisiones, matrículas, cursos y reportes de sus programas.
+- Tutor: cursos y asignaturas asignados, actividades, evaluaciones, calificaciones y seguimiento.
+- Postulante/Estudiante: perfil, postulaciones, documentos, matrícula, actividades, evaluaciones, calificaciones y notificaciones.
 
-Los permisos definitivos deben coincidir con [[Seguridad y permisos]].
+Los permisos definitivos deben coincidir con [[Matriz de permisos]] y [[Seguridad y permisos]].
