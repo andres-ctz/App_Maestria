@@ -1,3 +1,4 @@
+import { demoHabilitado } from "@/lib/auth/constants"
 import { usuarios } from "@/lib/mock-data"
 import type { Role, Usuario } from "@/lib/types"
 
@@ -13,9 +14,12 @@ export function serializarSesion(cuentaId: string, rol: Role): string {
 /**
  * Interpreta el valor de la cookie de demostración. Devuelve null si la cuenta no
  * existe, está desactivada o no tiene el rol indicado.
+ *
+ * La cookie de demostración no está firmada: cualquiera podría fabricarla. Por eso, fuera
+ * del modo demostración (producción sin AUTH_DEMO) toda sesión se considera inválida.
  */
 export function resolverSesion(valor: string | null | undefined): Sesion | null {
-  if (!valor) return null
+  if (!demoHabilitado() || !valor) return null
   const separador = valor.lastIndexOf(":")
   if (separador < 1) return null
   const id = valor.slice(0, separador)

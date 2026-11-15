@@ -22,6 +22,14 @@ describe("sesión de demostración", () => {
     expect(resolverSesion(undefined)).toBeNull()
   })
 
+  it("fuera del modo demostración ninguna cookie crea una sesión (la cookie no está firmada)", () => {
+    vi.stubEnv("NODE_ENV", "production")
+    vi.stubEnv("AUTH_DEMO", "")
+    expect(resolverSesion("u-admin:admin")).toBeNull()
+    vi.stubEnv("AUTH_DEMO", "true")
+    expect(resolverSesion("u-admin:admin")?.cuenta.id).toBe("u-admin")
+  })
+
   it("el rol inicial es el primero de la cuenta", () => {
     expect(rolInicial(usuarios.find((u) => u.id === "t-1")!)).toBe("tutor")
   })
