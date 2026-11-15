@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+import { cookies, headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { destinoSeguro, rutaInicial } from "@/lib/access"
 import { mensajesError, obtenerAuthService } from "@/lib/auth/auth-service"
@@ -13,11 +13,19 @@ export interface EstadoLogin {
   error?: string
 }
 
-const opcionesCookie = {
-  httpOnly: true,
-  sameSite: "lax" as const,
-  path: "/",
-  secure: process.env.NODE_ENV === "production",
+/**
+ * La cookie solo se marca Secure cuando la conexión es HTTPS (o producción sin demostración),
+ * para que la compilación local (`next start` con AUTH_DEMO=true sobre http) siga funcionando.
+ */
+async function opcionesCookie() {
+  const encabezados = await headers()
+  const https = encabezados.get("x-forwarded-proto") === "https"
+  return {
+    httpOnly: true,
+    sameSite: "lax" as const,
+    path: "/",
+    secure: https || (process.env.NODE_ENV === "production" && process.env.AUTH_DEMO !== "true"),
+  }
 }
 
 export async function iniciarSesionAction(_previo: EstadoLogin, datos: FormData): Promise<EstadoLogin> {
@@ -33,7 +41,7 @@ export async function iniciarSesionAction(_previo: EstadoLogin, datos: FormData)
   const { cuenta } = resultado
   const rol = rolInicial(cuenta)
   const almacen = await cookies()
-  almacen.set(COOKIE_SESION, serializarSesion(cuenta.id, rol), opcionesCookie)
+  almacen.set(COOKIE_SESION, serializarSesion(cuenta.id, rol), await opcionesCookie())
   redirect(destinoSeguro(siguiente, rol, cuenta) ?? rutaInicial(rol, cuenta))
 }
 
@@ -42,7 +50,7 @@ export async function cambiarRolAction(rol: Role): Promise<void> {
   const sesion = await leerSesion()
   if (!sesion || !sesion.cuenta.roles.includes(rol)) redirect("/login")
   const almacen = await cookies()
-  almacen.set(COOKIE_SESION, serializarSesion(sesion.cuenta.id, rol), opcionesCookie)
+  almacen.set(COOKIE_SESION, serializarSesion(sesion.cuenta.id, rol), await opcionesCookie())
   redirect(rutaInicial(rol, sesion.cuenta))
 }
 
