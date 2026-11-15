@@ -5,18 +5,18 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { RiskBadge } from "@/components/status/risk-badge"
-import { getPrograma, getTutor, postulantes } from "@/lib/mock-data"
+import { getPrograma, getTutor, estudiantes } from "@/lib/mock-data"
 
 export function AtRiskCard() {
-  const atRisk = postulantes.filter((p) => p.riesgo === "alto")
+  const atRisk = estudiantes.filter((p) => p.riesgo === "alto")
 
   return (
     <Card className="lg:col-span-2">
       <CardHeader>
-        <CardTitle>Postulantes que requieren intervención</CardTitle>
+        <CardTitle>Estudiantes que requieren intervención</CardTitle>
         <CardDescription>Riesgo alto según reglas configuradas. Pasa el cursor para ver los motivos.</CardDescription>
         <CardAction>
-          <Button variant="outline" size="sm" render={<Link href="/postulantes?riesgo=alto" />}>
+          <Button variant="outline" size="sm" render={<Link href="/estudiantes?riesgo=alto" />}>
             Ver matriz
             <ArrowRight data-icon="inline-end" />
           </Button>

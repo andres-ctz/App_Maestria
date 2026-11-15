@@ -13,13 +13,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { routeTitles } from "@/lib/navigation"
+import { buscarRuta, titulosPorSegmento } from "@/lib/modules"
+import { useSesion } from "@/components/providers/sesion-provider"
 import { GlobalSearch } from "@/components/app-shell/global-search"
 import { Notifications } from "@/components/app-shell/notifications"
 import { ThemeToggle } from "@/components/app-shell/theme-toggle"
 
 export function AppHeader() {
   const pathname = usePathname()
+  const { inicio } = useSesion()
   const segments = pathname.split("/").filter(Boolean)
 
   return (
@@ -29,11 +31,11 @@ export function AppHeader() {
       <Breadcrumb className="hidden md:block">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/" />}>Inicio</BreadcrumbLink>
+            <BreadcrumbLink render={<Link href={inicio} />}>Inicio</BreadcrumbLink>
           </BreadcrumbItem>
           {segments.map((seg, i) => {
             const href = `/${segments.slice(0, i + 1).join("/")}`
-            const title = routeTitles[seg] ?? seg
+            const title = titulosPorSegmento[seg] ?? seg
             const isLast = i === segments.length - 1
             return (
               <Fragment key={href}>
@@ -41,8 +43,10 @@ export function AppHeader() {
                 <BreadcrumbItem>
                   {isLast ? (
                     <BreadcrumbPage>{title}</BreadcrumbPage>
-                  ) : (
+                  ) : buscarRuta(href) ? (
                     <BreadcrumbLink render={<Link href={href} />}>{title}</BreadcrumbLink>
+                  ) : (
+                    <span className="text-muted-foreground">{title}</span>
                   )}
                 </BreadcrumbItem>
               </Fragment>

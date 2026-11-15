@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -27,7 +28,7 @@ export function Notifications() {
       <PopoverContent align="end" className="w-80 p-0">
         <PopoverHeader className="p-4 pb-2">
           <PopoverTitle>Alertas de vencimiento</PopoverTitle>
-          <PopoverDescription>Recordatorios automáticos a 15, 10, 5, 3 y 1 día.</PopoverDescription>
+          <PopoverDescription>Vencimientos próximos (datos de demostración).</PopoverDescription>
         </PopoverHeader>
         <Separator />
         <ul className="flex max-h-80 flex-col overflow-y-auto">
@@ -37,13 +38,19 @@ export function Notifications() {
                 <span className="truncate text-sm font-medium">{a.titulo}</span>
                 <span className="truncate text-xs text-muted-foreground">{a.descripcion}</span>
                 <span className="text-xs text-muted-foreground">
-                  {formatDate(a.fecha)} · {a.destinatarios} postulantes
+                  {formatDate(a.fecha)} · {a.destinatarios} estudiantes
                 </span>
               </div>
               <DeadlineBadge days={a.diasRestantes} />
             </li>
           ))}
         </ul>
+        <Separator />
+        <div className="p-2">
+          <Button variant="ghost" size="sm" className="w-full" render={<Link href="/notificaciones" />}>
+            Ver centro de notificaciones
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   )

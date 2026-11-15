@@ -1,25 +1,64 @@
+/**
+ * Tipos del dominio del frontend.
+ *
+ * Referencia funcional: Documento Maestro de Requisitos v0.3. Estos tipos son una
+ * guía para la interfaz, no el esquema final de la base de datos. Los nombres de
+ * dominio están en español, igual que en el boceto original; la correspondencia con
+ * los nombres de la API se resolverá en la capa de acceso a datos.
+ */
+
+/** "postulante" es el rol Postulante/Estudiante: una misma cuenta pasa de uno a otro (v0.3 §2.1). */
 export type Role = "admin" | "coordinador" | "tutor" | "postulante"
 
 export type RiskLevel = "bajo" | "medio" | "alto"
 
-export type EstadoInscripcion = "pendiente" | "aprobada" | "observada" | "rechazada"
+/** Estados de la postulación según el v0.3 §6.3. La lista oficial sigue en revisión. */
+export type EstadoPostulacion =
+  | "borrador"
+  | "recibida"
+  | "en-revision"
+  | "pendiente-correccion"
+  | "validada"
+  | "admitida"
+  | "no-admitida"
+  | "en-lista-de-espera"
 
-export type EstadoEntrega = "al-dia" | "atrasado" | "sin-entregas"
+/** Resultado de revisar un documento de postulación o una entrega de actividad. */
+export type EstadoRevision = "pendiente" | "en-correccion" | "aprobado" | "rechazado"
 
-export type EstadoEvidencia = "pendiente" | "en-correccion" | "aprobado" | "rechazado"
+/** Cumplimiento de entregas de un estudiante (no es el estado de revisión de una entrega). */
+export type EstadoCumplimiento = "al-dia" | "atrasado" | "sin-entregas"
 
 export type TipoContacto = "llamada" | "correo" | "reunion" | "whatsapp"
 
 export type ResultadoContacto = "contactado" | "no-contesta" | "reprogramado"
 
+export type TipoIdentificacion = "cedula" | "pasaporte"
+
+export interface Identificacion {
+  tipo: TipoIdentificacion
+  numero: string
+}
+
+/**
+ * Cuenta de usuario. Una cuenta puede tener varios roles (v0.3 §2.2).
+ * `protegida` marca las cuentas administrativas protegidas (v0.3 §2.9): no se pueden
+ * eliminar, desactivar ni cambiarles el correo. La regla definitiva se aplica en el backend.
+ */
 export interface Usuario {
   id: string
   nombre: string
   email: string
-  rol: Role
+  roles: Role[]
   estado: "activo" | "inactivo"
   ultimoAcceso: string
   iniciales: string
+  protegida?: boolean
+  /** Solo para el rol Postulante/Estudiante: define qué secciones ve. */
+  situacion?: {
+    tienePostulaciones: boolean
+    tieneMatricula: boolean
+  }
 }
 
 export interface Programa {
@@ -50,12 +89,35 @@ export interface Curso {
   actividades: number
 }
 
-export interface Postulante {
+export interface DocumentoPostulacion {
+  requisito: string
+  obligatorio: boolean
+  estado: EstadoRevision | "sin-cargar"
+}
+
+/** Flujo de admisión: la persona aún no está matriculada. */
+export interface Postulacion {
   id: string
   nombre: string
   email: string
   telefono: string
-  documento: string
+  identificacion: Identificacion
+  iniciales: string
+  programaId: string
+  convocatoriaId: string
+  estado: EstadoPostulacion
+  fechaEnvio?: string
+  documentos: DocumentoPostulacion[]
+  observaciones: string[]
+}
+
+/** Seguimiento académico: la persona ya está matriculada en un curso. */
+export interface Estudiante {
+  id: string
+  nombre: string
+  email: string
+  telefono: string
+  identificacion: Identificacion
   iniciales: string
   programaId: string
   convocatoriaId: string
@@ -65,14 +127,12 @@ export interface Postulante {
   actividadesTotales: number
   riesgo: RiskLevel
   motivosRiesgo: string[]
-  estadoInscripcion: EstadoInscripcion
-  estadoEntrega: EstadoEntrega
+  estadoEntrega: EstadoCumplimiento
   ultimaActividad: string
   formacion: {
     grado: string
-    universidad: string
+    institucion: string
     egreso: number
-    promedio: number
   }
 }
 
@@ -84,7 +144,7 @@ export interface Compromiso {
 
 export interface Seguimiento {
   id: string
-  postulanteId: string
+  estudianteId: string
   tutorId: string
   fecha: string
   tipo: TipoContacto
@@ -94,24 +154,25 @@ export interface Seguimiento {
   proximaAccion?: string
 }
 
-export interface VersionEvidencia {
+export interface VersionEntrega {
   version: number
   fecha: string
   archivo: string
   tamano: string
-  estado: EstadoEvidencia
+  estado: EstadoRevision
   feedback?: string
   revisor?: string
 }
 
-export interface Evidencia {
+/** Entrega de una actividad académica, con sus versiones (intentos). */
+export interface Entrega {
   id: string
-  postulanteId: string
+  estudianteId: string
   actividadId: string
   titulo: string
   curso: string
-  estado: EstadoEvidencia
-  versiones: VersionEvidencia[]
+  estado: EstadoRevision
+  versiones: VersionEntrega[]
 }
 
 export interface Actividad {
@@ -131,7 +192,7 @@ export interface Alerta {
   titulo: string
   descripcion: string
   fecha: string
-  diasRestantes: 15 | 10 | 5 | 3 | 1
+  diasRestantes: number
   destinatarios: number
 }
 
@@ -147,14 +208,7 @@ export interface EventoAuditoria {
   ip: string
 }
 
-export interface PasoInscripcion {
-  id: string
-  titulo: string
-  descripcion: string
-  completado: boolean
-  fecha?: string
-}
-
+/** Regla de riesgo de EJEMPLO: los criterios definitivos siguen pendientes (v0.3 §23). */
 export interface ReglaRiesgo {
   id: string
   regla: string

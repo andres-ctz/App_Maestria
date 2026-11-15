@@ -1,5 +1,6 @@
 "use client"
 
+import { FORMATO_FECHA } from "@/lib/config/institucion"
 import { useState } from "react"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
@@ -28,11 +29,11 @@ const resultados = [
 ]
 
 export function ContactForm({
-  postulanteId,
+  estudianteId,
   tutorId,
   onCreated,
 }: {
-  postulanteId: string
+  estudianteId: string
   tutorId: string
   onCreated: (s: Seguimiento) => void
 }) {
@@ -54,7 +55,7 @@ export function ContactForm({
 
     onCreated({
       id: `s-${Date.now()}`,
-      postulanteId,
+      estudianteId,
       tutorId,
       fecha: new Date().toISOString(),
       tipo,
@@ -153,7 +154,7 @@ export function ContactForm({
                 }
               >
                 <CalendarIcon data-icon="inline-start" />
-                {fecha ? format(fecha, "d MMM yyyy", { locale: es }) : <span className="text-muted-foreground">Elegir fecha</span>}
+                {fecha ? format(fecha, FORMATO_FECHA, { locale: es }) : <span className="text-muted-foreground">Elegir fecha</span>}
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="end">
                 <Calendar mode="single" selected={fecha} onSelect={setFecha} locale={es} />

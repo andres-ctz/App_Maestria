@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/sonner'
+import { institucion } from '@/lib/config/institucion'
 import './globals.css'
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
@@ -10,11 +11,10 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Precursus · Gestión de Cursos Preparatorios de Maestría',
-    template: '%s · Precursus',
+    default: `${institucion.nombre} · ${institucion.titulo}`,
+    template: `%s · ${institucion.nombre}`,
   },
-  description:
-    'Plataforma de gestión académica, seguimiento tutorial, retención de postulantes y trazabilidad para cursos preparatorios de programas de maestría.',
+  description: institucion.descripcion,
   icons: {
     icon: [
       {

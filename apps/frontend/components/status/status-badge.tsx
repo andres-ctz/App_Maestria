@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import type { EstadoEntrega, EstadoEvidencia, EstadoInscripcion } from "@/lib/types"
+import type { EstadoCumplimiento, EstadoPostulacion, EstadoRevision } from "@/lib/types"
 
 type Tone = "success" | "warning" | "danger" | "neutral" | "info"
 
@@ -20,30 +20,35 @@ export function ToneBadge({ tone, children, className }: { tone: Tone; children:
   )
 }
 
-const inscripcionMap: Record<EstadoInscripcion, { label: string; tone: Tone }> = {
-  pendiente: { label: "Pendiente", tone: "warning" },
-  aprobada: { label: "Aprobada", tone: "success" },
-  observada: { label: "Observada", tone: "info" },
-  rechazada: { label: "Rechazada", tone: "danger" },
+/** Estados de la postulación (v0.3 §6.3). La lista oficial sigue en revisión. */
+const postulacionMap: Record<EstadoPostulacion, { label: string; tone: Tone }> = {
+  borrador: { label: "Borrador", tone: "neutral" },
+  recibida: { label: "Recibida", tone: "info" },
+  "en-revision": { label: "En revisión", tone: "info" },
+  "pendiente-correccion": { label: "Pendiente de corrección", tone: "warning" },
+  validada: { label: "Validada", tone: "success" },
+  admitida: { label: "Admitida", tone: "success" },
+  "no-admitida": { label: "No admitida", tone: "danger" },
+  "en-lista-de-espera": { label: "En lista de espera", tone: "warning" },
 }
 
-export function InscripcionBadge({ estado }: { estado: EstadoInscripcion }) {
-  const s = inscripcionMap[estado]
+export function PostulacionBadge({ estado }: { estado: EstadoPostulacion }) {
+  const s = postulacionMap[estado]
   return <ToneBadge tone={s.tone}>{s.label}</ToneBadge>
 }
 
-const entregaMap: Record<EstadoEntrega, { label: string; tone: Tone }> = {
+const cumplimientoMap: Record<EstadoCumplimiento, { label: string; tone: Tone }> = {
   "al-dia": { label: "Al día", tone: "success" },
   atrasado: { label: "Atrasado", tone: "danger" },
   "sin-entregas": { label: "Sin entregas", tone: "neutral" },
 }
 
-export function EntregaBadge({ estado }: { estado: EstadoEntrega }) {
-  const s = entregaMap[estado]
+export function CumplimientoBadge({ estado }: { estado: EstadoCumplimiento }) {
+  const s = cumplimientoMap[estado]
   return <ToneBadge tone={s.tone}>{s.label}</ToneBadge>
 }
 
-const evidenciaMap: Record<EstadoEvidencia | "entregado", { label: string; tone: Tone }> = {
+const revisionMap: Record<EstadoRevision | "entregado", { label: string; tone: Tone }> = {
   pendiente: { label: "Pendiente de revisión", tone: "warning" },
   "en-correccion": { label: "En corrección", tone: "info" },
   aprobado: { label: "Aprobado", tone: "success" },
@@ -51,7 +56,7 @@ const evidenciaMap: Record<EstadoEvidencia | "entregado", { label: string; tone:
   entregado: { label: "Entregado", tone: "info" },
 }
 
-export function EvidenciaBadge({ estado }: { estado: EstadoEvidencia | "entregado" }) {
-  const s = evidenciaMap[estado]
+export function RevisionBadge({ estado }: { estado: EstadoRevision | "entregado" }) {
+  const s = revisionMap[estado]
   return <ToneBadge tone={s.tone}>{s.label}</ToneBadge>
 }

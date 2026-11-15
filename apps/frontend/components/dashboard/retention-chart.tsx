@@ -14,7 +14,7 @@ export function RetentionChart() {
     <Card className="lg:col-span-2">
       <CardHeader>
         <CardTitle>Tendencia de retención</CardTitle>
-        <CardDescription>Porcentaje de postulantes activos por semana del curso preparatorio</CardDescription>
+        <CardDescription>Porcentaje de estudiantes activos por semana del curso preparatorio</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={config} className="aspect-auto h-64 w-full">

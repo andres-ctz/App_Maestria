@@ -1,11 +1,14 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-shell/app-sidebar"
 import { AppHeader } from "@/components/app-shell/app-header"
-import { RoleProvider } from "@/components/providers/role-provider"
+import { SesionProvider } from "@/components/providers/sesion-provider"
+import { requerirSesion } from "@/lib/auth/session"
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({ children }: { children: React.ReactNode }) {
+  const sesion = await requerirSesion()
+
   return (
-    <RoleProvider>
+    <SesionProvider cuenta={sesion.cuenta} rolActivo={sesion.rolActivo}>
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
@@ -13,6 +16,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <main className="flex flex-1 flex-col gap-6 p-4 md:p-6 lg:p-8">{children}</main>
         </SidebarInset>
       </SidebarProvider>
-    </RoleProvider>
+    </SesionProvider>
   )
 }

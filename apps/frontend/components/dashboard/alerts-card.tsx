@@ -1,6 +1,4 @@
-import { BellRing } from "lucide-react"
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { DeadlineBadge } from "@/components/status/deadline-badge"
 import { alertas } from "@/lib/mock-data"
 import { formatDate } from "@/lib/format"
@@ -10,13 +8,7 @@ export function AlertsCard() {
     <Card>
       <CardHeader>
         <CardTitle>Próximos vencimientos</CardTitle>
-        <CardDescription>Recordatorios automáticos programados</CardDescription>
-        <CardAction>
-          <Badge variant="secondary">
-            <BellRing data-icon="inline-start" />
-            15 · 10 · 5 · 3 · 1
-          </Badge>
-        </CardAction>
+        <CardDescription>Actividades por vencer (datos de demostración)</CardDescription>
       </CardHeader>
       <CardContent>
         <ul className="flex flex-col">

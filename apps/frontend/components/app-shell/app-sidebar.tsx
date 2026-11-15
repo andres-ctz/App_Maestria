@@ -17,20 +17,22 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { navigationByRole } from "@/lib/navigation"
-import { useRole } from "@/components/providers/role-provider"
-import { RoleSwitcher } from "@/components/app-shell/role-switcher"
+import { construirNavegacion } from "@/lib/navigation"
+import { institucion } from "@/lib/config/institucion"
+import { useSesion } from "@/components/providers/sesion-provider"
+import { UserMenu } from "@/components/app-shell/user-menu"
 
 export function AppSidebar() {
   const pathname = usePathname()
-  const { role } = useRole()
-  const sections = navigationByRole[role]
+  const { role, user, inicio } = useSesion()
+  const sections = construirNavegacion(role, user)
+  const hrefs = sections.flatMap((s) => s.items.map((i) => i.href))
 
+  // Un elemento está activo si la ruta coincide o es un hijo suyo, salvo que otro elemento del menú coincida mejor.
   const isActive = (href: string) => {
-    const base = href.split("#")[0]
-    if (href.includes("#")) return false
-    if (base === "/tutor" || base === "/portal") return pathname === base
-    return pathname === base || pathname.startsWith(`${base}/`)
+    if (pathname === href) return true
+    if (!pathname.startsWith(`${href}/`)) return false
+    return !hrefs.some((h) => h !== href && h.length > href.length && (pathname === h || pathname.startsWith(`${h}/`)))
   }
 
   return (
@@ -38,13 +40,13 @@ export function AppSidebar() {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<Link href="/" />} tooltip="Precursus">
+            <SidebarMenuButton size="lg" render={<Link href={inicio} />} tooltip={institucion.nombre}>
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                 <GraduationCap className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">Precursus</span>
-                <span className="truncate text-xs text-muted-foreground">Escuela de Posgrado</span>
+                <span className="truncate font-semibold">{institucion.nombre}</span>
+                <span className="truncate text-xs text-muted-foreground">{institucion.unidad}</span>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -75,7 +77,7 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <RoleSwitcher />
+        <UserMenu />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

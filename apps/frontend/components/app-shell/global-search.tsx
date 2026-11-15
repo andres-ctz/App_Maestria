@@ -15,7 +15,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command"
 import { Command } from "@/components/ui/command"
-import { evidencias, getPrograma, postulantes, programas } from "@/lib/mock-data"
+import { entregas, getPrograma, estudiantes, programas } from "@/lib/mock-data"
 
 export function GlobalSearch() {
   const [open, setOpen] = useState(false)
@@ -52,18 +52,18 @@ export function GlobalSearch() {
         open={open}
         onOpenChange={setOpen}
         title="Búsqueda global"
-        description="Busca postulantes, programas y evidencias"
+        description="Busca estudiantes, programas y entregas"
       >
         <Command>
-          <CommandInput placeholder="Buscar postulantes, programas, evidencias…" />
+          <CommandInput placeholder="Buscar estudiantes, programas, entregas…" />
           <CommandList>
             <CommandEmpty>Sin resultados.</CommandEmpty>
-            <CommandGroup heading="Postulantes">
-              {postulantes.map((p) => (
+            <CommandGroup heading="Estudiantes">
+              {estudiantes.map((p) => (
                 <CommandItem
                   key={p.id}
-                  value={`${p.nombre} ${p.documento} ${p.email}`}
-                  onSelect={() => go(`/postulantes?q=${encodeURIComponent(p.nombre)}`)}
+                  value={`${p.nombre} ${p.identificacion.numero} ${p.email}`}
+                  onSelect={() => go(`/estudiantes?q=${encodeURIComponent(p.nombre)}`)}
                 >
                   <UserRound />
                   <span className="truncate">{p.nombre}</span>
@@ -83,12 +83,12 @@ export function GlobalSearch() {
               ))}
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Evidencias">
-              {evidencias.map((e) => (
+            <CommandGroup heading="Entregas">
+              {entregas.map((e) => (
                 <CommandItem
                   key={e.id}
                   value={`${e.titulo} ${e.versiones[0].archivo}`}
-                  onSelect={() => go("/tutor/evidencias")}
+                  onSelect={() => go("/tutor/entregas")}
                 >
                   <FileText />
                   <span className="truncate">{e.versiones[0].archivo}</span>

@@ -1,19 +1,32 @@
 import {
+  Award,
+  Bell,
+  BookOpen,
   BookOpenCheck,
-  CalendarClock,
+  Building2,
+  CalendarRange,
   ClipboardList,
   FileCheck2,
   FileText,
   GraduationCap,
-  History,
+  Inbox,
   LayoutDashboard,
+  ListChecks,
+  Megaphone,
   Settings,
   ShieldCheck,
+  UserCheck,
+  UserCog,
+  UserRound,
   UserRoundSearch,
   Users,
+  UsersRound,
   type LucideIcon,
 } from "lucide-react"
-import type { Role } from "@/lib/types"
+import { puedeAcceder } from "@/lib/access"
+import { RUTAS } from "@/lib/modules"
+import { entregas, estudiantes, postulaciones } from "@/lib/mock-data"
+import type { Role, Usuario } from "@/lib/types"
 
 export interface NavItem {
   title: string
@@ -27,93 +40,92 @@ export interface NavSection {
   items: NavItem[]
 }
 
-export const roleLabels: Record<Role, string> = {
-  admin: "Administrador",
-  coordinador: "Coordinador",
-  tutor: "Tutor",
-  postulante: "Postulante",
+/** Iconos por id de ruta. Se exporta para las pruebas. */
+export const ICONOS_NAVEGACION: Record<string, LucideIcon> = {
+  usuarios: Users,
+  configuracion: Settings,
+  facultades: Building2,
+  programas: GraduationCap,
+  periodos: CalendarRange,
+  convocatorias: Megaphone,
+  postulaciones: Inbox,
+  admisiones: UserCheck,
+  matriculas: ClipboardList,
+  cursos: BookOpen,
+  tutores: UserCog,
+  calificaciones: Award,
+  dashboard: LayoutDashboard,
+  estudiantes: UserRoundSearch,
+  reportes: FileText,
+  auditoria: ShieldCheck,
+  tutor: Users,
+  "tutor-entregas": FileCheck2,
+  "tutor-cursos": BookOpen,
+  "tutor-actividades": ClipboardList,
+  "tutor-evaluaciones": ListChecks,
+  "tutor-calificaciones": Award,
+  "tutor-grupos": UsersRound,
+  catalogo: Megaphone,
+  "postulante-postulaciones": Inbox,
+  estudiante: GraduationCap,
+  "estudiante-actividades": BookOpenCheck,
+  "estudiante-evaluaciones": ListChecks,
+  "estudiante-calificaciones": Award,
+  notificaciones: Bell,
+  perfil: UserRound,
 }
 
-export const roleUserIds: Record<Role, string> = {
-  admin: "u-admin",
-  coordinador: "u-coord",
-  tutor: "t-1",
-  postulante: "p-1",
-}
-
-export const navigationByRole: Record<Role, NavSection[]> = {
+/** Secciones de cada rol. Cada elemento se filtra después por permisos y por el estado de la cuenta. */
+export const ESTRUCTURA_NAVEGACION: Record<Role, { label: string; ids: string[] }[]> = {
   admin: [
-    {
-      label: "Administración",
-      items: [
-        { title: "Usuarios y roles", href: "/usuarios", icon: Users },
-        { title: "Configuración", href: "/configuracion", icon: Settings },
-        { title: "Auditoría", href: "/auditoria", icon: ShieldCheck },
-      ],
-    },
+    { label: "Administración", ids: ["usuarios", "configuracion"] },
+    { label: "Estructura académica", ids: ["facultades", "programas", "periodos"] },
+    { label: "Procesos", ids: ["convocatorias", "postulaciones", "admisiones", "matriculas"] },
+    { label: "Gestión académica", ids: ["cursos", "tutores", "calificaciones"] },
+    { label: "Seguimiento y control", ids: ["dashboard", "estudiantes", "reportes", "auditoria"] },
   ],
   coordinador: [
-    {
-      label: "Gestión académica",
-      items: [
-        { title: "Panel ejecutivo", href: "/dashboard", icon: LayoutDashboard },
-        { title: "Matriz de postulantes", href: "/postulantes", icon: UserRoundSearch, badge: "3" },
-        { title: "Programas y cursos", href: "/programas", icon: GraduationCap },
-      ],
-    },
-    {
-      label: "Análisis",
-      items: [
-        { title: "Reportes", href: "/reportes", icon: FileText },
-        { title: "Trazabilidad", href: "/auditoria", icon: History },
-      ],
-    },
+    { label: "Gestión académica", ids: ["dashboard", "programas", "convocatorias", "cursos", "tutores"] },
+    { label: "Admisión", ids: ["postulaciones", "admisiones", "matriculas"] },
+    { label: "Seguimiento y control", ids: ["estudiantes", "reportes", "auditoria"] },
   ],
   tutor: [
-    {
-      label: "Tutoría",
-      items: [
-        { title: "Mis postulantes", href: "/tutor", icon: Users },
-        { title: "Revisión de evidencias", href: "/tutor/evidencias", icon: FileCheck2, badge: "3" },
-      ],
-    },
+    { label: "Tutoría", ids: ["tutor", "tutor-entregas"] },
+    { label: "Docencia", ids: ["tutor-cursos", "tutor-actividades", "tutor-evaluaciones", "tutor-calificaciones", "tutor-grupos"] },
+    { label: "Reportes", ids: ["reportes"] },
   ],
   postulante: [
-    {
-      label: "Mi portal",
-      items: [
-        { title: "Mi inscripción", href: "/portal", icon: ClipboardList },
-        { title: "Actividades y evidencias", href: "/portal/actividades", icon: BookOpenCheck },
-        { title: "Cronograma", href: "/portal/actividades#cronograma", icon: CalendarClock },
-      ],
-    },
+    { label: "Admisión", ids: ["catalogo", "postulante-postulaciones"] },
+    { label: "Mi curso", ids: ["estudiante", "estudiante-actividades", "estudiante-evaluaciones", "estudiante-calificaciones", "reportes"] },
   ],
 }
 
-export const roleHome: Record<Role, string> = {
-  admin: "/usuarios",
-  coordinador: "/dashboard",
-  tutor: "/tutor",
-  postulante: "/portal",
+export const IDS_CUENTA_COMUN = ["notificaciones", "perfil"]
+
+function insignia(id: string, cuenta: Usuario): string | undefined {
+  if (id === "postulaciones") {
+    const n = postulaciones.filter((p) => ["recibida", "en-revision", "pendiente-correccion"].includes(p.estado)).length
+    return n > 0 ? String(n) : undefined
+  }
+  if (id === "tutor-entregas") {
+    const suyos = new Set(estudiantes.filter((e) => e.tutorId === cuenta.id).map((e) => e.id))
+    const n = entregas.filter((e) => suyos.has(e.estudianteId) && e.estado === "pendiente").length
+    return n > 0 ? String(n) : undefined
+  }
+  return undefined
 }
 
-export const routeTitles: Record<string, string> = {
-  dashboard: "Panel ejecutivo",
-  postulantes: "Matriz de postulantes",
-  programas: "Programas y cursos",
-  reportes: "Reportes",
-  auditoria: "Auditoría y trazabilidad",
-  usuarios: "Usuarios y roles",
-  configuracion: "Configuración",
-  tutor: "Mis postulantes",
-  evidencias: "Revisión de evidencias",
-  portal: "Mi inscripción",
-  actividades: "Actividades y evidencias",
-}
-
-export function inferRoleFromPath(pathname: string): Role {
-  if (pathname.startsWith("/tutor")) return "tutor"
-  if (pathname.startsWith("/portal")) return "postulante"
-  if (pathname.startsWith("/usuarios") || pathname.startsWith("/configuracion")) return "admin"
-  return "coordinador"
+/** Construye el menú de un rol para una cuenta. Solo incluye rutas a las que realmente puede entrar. */
+export function construirNavegacion(rol: Role, cuenta: Usuario): NavSection[] {
+  const secciones = [...ESTRUCTURA_NAVEGACION[rol], { label: "Mi cuenta", ids: IDS_CUENTA_COMUN }]
+  return secciones
+    .map((s) => ({
+      label: s.label,
+      items: s.ids.flatMap((id): NavItem[] => {
+        const ruta = RUTAS.find((r) => r.id === id)
+        if (!ruta || !puedeAcceder(ruta.ruta, rol, cuenta)) return []
+        return [{ title: ruta.titulo, href: ruta.ruta, icon: ICONOS_NAVEGACION[id], badge: insignia(id, cuenta) }]
+      }),
+    }))
+    .filter((s) => s.items.length > 0)
 }
