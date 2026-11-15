@@ -42,5 +42,21 @@ Detectadas al comparar ambos documentos. "No lo menciona" significa que el v0.3 
 - **Cierre de convocatoria (§6.6):** el período adicional de revisión es "configurable", sin valor por defecto.
 - **Recordatorios:** §14 no define anticipación ni frecuencia.
 - **Nivel de riesgo para el estudiante:** el v0.3 no dice si lo ve.
-- **Zona horaria y horario de recordatorios:** sin definir.
+- **Horario de envío de recordatorios:** sin definir. La zona horaria quedó definida el 14/11/2026 (America/Guayaquil, GMT-5, hora de Quito); ver [[Registro de decisiones]].
 - **Cierre y publicación de calificaciones:** §12 solo menciona al administrador; falta definir el papel del coordinador.
+
+## D. Detectadas durante la Fase 1 (frontend)
+Surgieron al construir la navegación y las pantallas. No se resolvieron: el frontend las dejó pendientes o marcadas como ejemplo.
+
+| Tema | Qué se encontró | Qué hizo el frontend | Acción |
+|---|---|---|---|
+| Calificaciones del coordinador | La matriz de permisos dice «Por definir» para plantillas, planes, cierre y publicación | La ruta `/calificaciones` solo se habilita al administrador | Definir su papel |
+| Grupos | La matriz dice «Por definir» para administrador y coordinador | `/tutor/grupos` solo para el tutor | Definir |
+| Reasignaciones | Quién reasigna programas, cursos y asignaturas: «Por definir» para el coordinador | No hay pantalla | Definir |
+| Indicadores del panel ejecutivo | El v0.3 no los define | El panel muestra datos de demostración | Definir indicadores y fórmulas |
+| Recordatorios | No hay anticipación definida | Se quitó del código la secuencia 15·10·5·3·1 | Definir |
+| Reglas de riesgo, tamaño y tipos de archivo | Siguen pendientes (§23) | Se muestran marcados como «Ejemplo · pendiente de definición institucional» | Definir |
+| Cupos | El tipo del boceto guarda `vacantes` en el programa; el v0.3 asigna cupos por convocatoria | Se dejó sin cambios | Revisar al modelar convocatorias |
+| Estados de la convocatoria | Los datos de ejemplo usan 3; el v0.3 define 8 | Sin cambios | Alinear al construir convocatorias |
+| Nivel de riesgo visible para el estudiante | El v0.3 no lo dice | «Mi curso» no lo muestra | Decidir |
+| Alcance del coordinador por programa | La demostración no filtra por programas asignados | El coordinador ve todos los estudiantes | Definir el modelo de asignación |

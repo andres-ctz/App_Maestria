@@ -3,7 +3,7 @@
 > [!info] Regla de control (v0.3 §25)
 > Cualquier cambio funcional posterior debe documentarse, justificarse y reflejarse en los documentos complementarios. Las herramientas de asistencia no pueden modificar decisiones funcionales por cuenta propia.
 
-Las decisiones de abajo ya figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3, que está **pendiente de aprobación**. Completar fecha y responsable al aprobarlas.
+Las decisiones D-001 a D-008 ya figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3, que está **pendiente de aprobación**; completar fecha y responsable al aprobarlas. Las decisiones D-009 a D-012 las definió el equipo el 14/11/2026.
 
 | ID | Fecha | Decisión | Fuente | Aprobada por | Estado |
 |---|---|---|---|---|---|
@@ -15,5 +15,9 @@ Las decisiones de abajo ya figuran en el [[Documento_Maestro_Requisitos_App_Maes
 | D-006 | Por definir | Las calificaciones publicadas son definitivas e inmutables | v0.3 §12.6 | Por definir | En v0.3, pendiente de aprobación |
 | D-007 | Por definir | Los archivos físicos no se guardan en PostgreSQL; hay una entidad central de archivos | v0.3 §15.1 | Por definir | En v0.3, pendiente de aprobación |
 | D-008 | Por definir | Primera etapa en entorno local, con datos de prueba y correo simulado | v0.3 §21.4 | Por definir | En v0.3, pendiente de aprobación |
+| D-009 | 14/11/2026 | Zona horaria del sistema: hora de Ecuador (America/Guayaquil, GMT-5, hora de Quito) | Indicada por el equipo | Equipo | Definida |
+| D-010 | 14/11/2026 | En la Fase 1 el inicio de sesión es de demostración: sin backend, solo en desarrollo, sin contraseñas ni secretos | Instrucción de la Fase 1 | Equipo | Definida para la Fase 1 |
+| D-011 | 14/11/2026 | El frontend vive en `apps/frontend` | Instrucción de la Fase 1 | Equipo | Definida |
+| D-012 | 14/11/2026 | Tipos y rutas del frontend en español; la correspondencia con los nombres de la API se resuelve en la capa de acceso a datos | Instrucción de la Fase 1 | Equipo | Definida |
 
 Las discrepancias con el v0.2 están en [[Decisiones pendientes]].
