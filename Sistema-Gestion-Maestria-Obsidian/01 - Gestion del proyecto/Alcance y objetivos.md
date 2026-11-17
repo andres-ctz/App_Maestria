@@ -31,12 +31,14 @@ Plataforma web para administrar programas de maestría, convocatorias, postulaci
 
 ## Fuera del alcance inicial (v0.3 §1.5)
 - Integración con sistemas externos de admisión o gestión universitaria, salvo aprobación posterior.
-- Envío de correos con un proveedor real durante el desarrollo local.
+- Envío de correos con un proveedor real durante el desarrollo local. Las notificaciones internas y los correos simulados sí se usan (D-013).
 - Aplicaciones móviles nativas.
 - Videoconferencias integradas.
 - Chat general entre usuarios.
 - Modificación individual de permisos por usuario.
 - Automatización de decisiones institucionales que requieran aprobación humana.
+- Proceso académico de nivelación; podrá evaluarse en una versión futura (D-018).
+- Constructor de formularios dinámicos (D-017).
 - Despliegue definitivo en producción antes de la validación del cliente.
 
 ## Orden de implementación (heredado del v0.2 §18, por validar)

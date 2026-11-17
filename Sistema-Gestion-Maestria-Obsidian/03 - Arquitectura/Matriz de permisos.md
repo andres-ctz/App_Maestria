@@ -17,6 +17,7 @@ El alcance lo delimitan las asignaciones: el coordinador ve **sus programas**; e
 | Postulación: enviar y corregir | — | — | — | Las propias; corrige solo lo habilitado | §6.1, §6.4 |
 | Postulación: revisar documentos y pedir correcciones | Global | Sus programas | — | — | §6.5 |
 | Decisiones de admisión y cupos | Global | Sus programas | — | — | §2.3, §7 |
+| Ofertas de vacante | Por definir | Gestiona y fija el plazo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019 |
 | Matrículas | Global | Sus programas | — | Consulta la propia | §2.3, §8 |
 | Cursos, módulos y asignaturas | Global | Sus programas | Consulta los asignados | Consulta los matriculados | §2.3, §9 |
 | Grupos de estudiantes | Por definir | Por definir | Gestiona; único que mueve estudiantes | Se incorpora si el tutor lo permite | §9.4 |

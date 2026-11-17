@@ -10,7 +10,7 @@ Borrador, no contrato aprobado. Recursos derivados de los módulos del [[Documen
 | `/faculties`, `/programs`, `/periods` | estructura institucional |
 | `/calls` | convocatorias y catálogo público |
 | `/applications` | postulaciones, documentos, revisiones y correcciones |
-| `/admissions`, `/waitlist` | decisiones de admisión, cupos y lista de espera |
+| `/admissions`, `/waitlist`, `/seat-offers` | decisiones de admisión, cupos, lista de espera y ofertas de vacante |
 | `/enrollments` | matrículas |
 | `/courses`, `/modules`, `/subjects`, `/groups` | estructura académica y grupos |
 | `/activities`, `/submissions` | actividades, entregas, intentos y calificación |
