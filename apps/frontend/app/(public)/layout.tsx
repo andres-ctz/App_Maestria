@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Brand } from "@/components/brand"
+import { ThemeToggle } from "@/components/app-shell/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { rutaInicial } from "@/lib/access"
 import { leerSesion } from "@/lib/auth/session"
@@ -12,6 +13,7 @@ export default async function PublicLayout({ children }: { children: React.React
       <header className="flex items-center justify-between gap-4 border-b px-4 py-3 md:px-8">
         <Brand />
         <nav className="flex items-center gap-2" aria-label="Acceso">
+          <ThemeToggle />
           {sesion ? (
             <Button render={<Link href={rutaInicial(sesion.rolActivo, sesion.cuenta)} />}>Ir a mi cuenta</Button>
           ) : (

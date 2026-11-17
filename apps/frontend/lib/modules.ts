@@ -1,3 +1,4 @@
+import { TEXTO_ESCALA } from "@/lib/config/calificaciones"
 import type { Role } from "@/lib/types"
 
 /**
@@ -58,24 +59,23 @@ export const RUTAS: DefinicionRuta[] = [
   { id: "periodos", ruta: "/periodos", titulo: "Períodos académicos", descripcion: "Períodos académicos y su relación con los programas.", roles: ["admin"], estado: "provisional", modulo: "3. Facultades, programas y períodos",
     incluira: ["Períodos con código, fechas y estado", "Relación entre programas y períodos"] },
   { id: "convocatorias", ruta: "/convocatorias", titulo: "Convocatorias", descripcion: "Convocatorias por programa y período.", roles: GESTION, estado: "provisional", modulo: "4. Convocatorias",
-    incluira: ["Convocatorias con fechas, cupos y requisitos", "Estados de la convocatoria", "Documentos públicos y privados"] },
+    incluira: ["Fechas, cupos y estado de cada convocatoria", "Requisitos y documentos solicitados, configurables por convocatoria (el formulario de postulación tiene estructura fija)", "Documentos públicos y privados"] },
   { id: "postulaciones", ruta: "/postulaciones", titulo: "Postulaciones", descripcion: "Revisión de postulaciones y sus documentos.", roles: GESTION, estado: "provisional", modulo: "5. Postulaciones y documentos",
-    incluira: ["Revisión documental por requisito", "Solicitudes de corrección", "Historial de estados de cada postulación"],
-    pendientes: ["Lista oficial de estados de la postulación (Decisiones pendientes, sección B)"] },
+    incluira: ["Revisión documental por requisito", "Solicitudes de corrección", "Los ocho estados de la postulación del v0.3 (§6.3) y su historial"] },
   { id: "admisiones", ruta: "/admisiones", titulo: "Admisiones y lista de espera", descripcion: "Decisiones de admisión, cupos y lista de espera.", roles: GESTION, estado: "provisional", modulo: "6. Admisiones y listas de espera",
-    incluira: ["Decisiones de admisión con responsable, fecha y observaciones", "Asignación de cupos sin doble asignación", "Lista de espera por orden de llegada"],
-    pendientes: ["Ofertas de vacante con plazo de respuesta (Decisiones pendientes, sección B)"] },
+    incluira: ["Decisiones de admisión con responsable, fecha y observaciones", "Asignación de cupos sin doble asignación", "Lista de espera por orden de llegada", "Ofertas de vacante con plazo de respuesta: las gestiona el coordinador y el postulante las acepta o rechaza; si una oferta vence, el coordinador continúa con la siguiente persona de la lista"],
+    pendientes: ["Campos y estados de la oferta y su relación con la asignación de cupos (Decisiones pendientes, sección C)"] },
   { id: "matriculas", ruta: "/matriculas", titulo: "Matrículas", descripcion: "Matrículas de los estudiantes admitidos.", roles: GESTION, estado: "provisional", modulo: "7. Matrículas",
     incluira: ["Matrícula del estudiante en un curso, con su postulación de origen", "Estados e historial de la matrícula"],
-    pendientes: ["Comprobante de matrícula y retiros (Decisiones pendientes, sección B)"] },
+    pendientes: ["Comprobante de matrícula y retiros: sin decisión definitiva (Decisiones pendientes, sección B)"] },
   { id: "cursos", ruta: "/cursos", titulo: "Cursos y asignaturas", descripcion: "Cursos preparatorios, módulos y asignaturas.", roles: GESTION, estado: "provisional", modulo: "8. Cursos, módulos y asignaturas",
     incluira: ["Cursos con módulos opcionales y asignaturas", "Fechas del curso dentro del período"] },
   { id: "tutores", ruta: "/tutores", titulo: "Tutores y asignaciones", descripcion: "Asignación y seguimiento de tutores.", roles: GESTION, estado: "provisional", modulo: "9. Tutores, coordinadores y grupos",
     incluira: ["Asignación de tutores a cursos y asignaturas", "Historial de asignaciones con motivo"],
     pendientes: ["Alcance del coordinador en la asignación de tutores (Decisiones pendientes, sección C)"] },
   { id: "calificaciones", ruta: "/calificaciones", titulo: "Calificaciones", descripcion: "Planes de calificación, cierre y publicación.", roles: ["admin"], estado: "provisional", modulo: "12. Calificaciones y ponderaciones",
-    incluira: ["Plantillas institucionales con categorías", "Planes por curso y asignatura (suma exacta de 100 puntos)", "Cierre, reapertura y publicación de calificaciones"],
-    pendientes: ["Escala de calificaciones y nota mínima", "Papel del coordinador en el cierre y la publicación (la matriz de permisos dice «Por definir»)"] },
+    incluira: [TEXTO_ESCALA, "Plantillas institucionales con categorías", "Planes por curso y asignatura (la distribución suma exactamente cien puntos)", "Cierre, reapertura y publicación de calificaciones"],
+    pendientes: ["Si la nota mínima puede variar por programa o asignatura", "Detalle de la redistribución de ponderaciones (v0.3 §23)", "Papel del coordinador en el cierre y la publicación (la matriz de permisos dice «Por definir»)"] },
   { id: "auditoria", ruta: "/auditoria", titulo: "Auditoría y trazabilidad", descripcion: "Registro de las operaciones importantes del sistema.", roles: GESTION, estado: "provisional", modulo: "16. Auditoría",
     incluira: ["Usuario, acción, fecha y valores anterior y nuevo", "Alcance global para el administrador y por programa para el coordinador"] },
   { id: "reportes", ruta: "/reportes", titulo: "Reportes", descripcion: "Exportaciones en PDF y Excel según tu alcance.", roles: TODOS, requiere: "matricula", estado: "provisional", modulo: "17. Reportes y exportaciones",
@@ -89,8 +89,7 @@ export const RUTAS: DefinicionRuta[] = [
   { id: "tutor-evaluaciones", ruta: "/tutor/evaluaciones", titulo: "Evaluaciones", descripcion: "Evaluaciones en línea y banco de preguntas.", roles: ["tutor"], estado: "provisional", modulo: "11. Evaluaciones en línea",
     incluira: ["Evaluaciones con tiempo e intentos", "Banco de preguntas por asignatura y tema", "Calificación de los intentos"] },
   { id: "tutor-calificaciones", ruta: "/tutor/calificaciones", titulo: "Calificaciones", descripcion: "Calificaciones de tus asignaturas.", roles: ["tutor"], estado: "provisional", modulo: "12. Calificaciones y ponderaciones",
-    incluira: ["Ajuste del plan de calificación dentro de la plantilla institucional", "Historial de calificaciones de tus asignaturas"],
-    pendientes: ["Escala de calificaciones y nota mínima"] },
+    incluira: [TEXTO_ESCALA, "Ajuste del plan de calificación dentro de la plantilla institucional", "Historial de calificaciones de tus asignaturas"] },
   { id: "tutor-grupos", ruta: "/tutor/grupos", titulo: "Grupos", descripcion: "Grupos de estudiantes de tus asignaturas.", roles: ["tutor"], estado: "provisional", modulo: "9. Tutores, coordinadores y grupos",
     incluira: ["Grupos de estudiantes por asignatura", "Solo el tutor mueve estudiantes entre grupos"] },
 
@@ -100,13 +99,12 @@ export const RUTAS: DefinicionRuta[] = [
   { id: "estudiante-evaluaciones", ruta: "/estudiante/evaluaciones", titulo: "Evaluaciones", descripcion: "Evaluaciones disponibles en tus asignaturas.", roles: ["postulante"], requiere: "matricula", estado: "provisional", modulo: "11. Evaluaciones en línea",
     incluira: ["Evaluaciones disponibles y su ventana de tiempo", "Resultado según la configuración de cada evaluación"] },
   { id: "estudiante-calificaciones", ruta: "/estudiante/calificaciones", titulo: "Calificaciones", descripcion: "Calificaciones publicadas de tus asignaturas.", roles: ["postulante"], requiere: "matricula", estado: "provisional", modulo: "12. Calificaciones y ponderaciones",
-    incluira: ["Calificaciones publicadas por asignatura", "Reporte final en PDF"],
-    pendientes: ["Escala de calificaciones y nota mínima"] },
+    incluira: [TEXTO_ESCALA, "Calificaciones publicadas por asignatura", "Reporte final en PDF"] },
 
   // ---------------------------------------------------------------- transversales
   { id: "notificaciones", ruta: "/notificaciones", titulo: "Notificaciones", descripcion: "Centro de notificaciones y preferencias.", roles: TODOS, estado: "provisional", modulo: "14. Notificaciones",
-    incluira: ["Centro de notificaciones de la plataforma", "Preferencias dentro de los tipos que habilita el administrador", "Correos simulados en el entorno local"],
-    pendientes: ["Anticipación y frecuencia de los recordatorios", "Si hay correo electrónico además de las notificaciones internas (Decisiones pendientes, sección B)"] },
+    incluira: ["Centro de notificaciones de la plataforma", "Preferencias dentro de los tipos que habilita el administrador", "Notificaciones internas y correos simulados en el entorno local; no se envían correos reales en esta etapa"],
+    pendientes: ["Anticipación y frecuencia de los recordatorios"] },
   { id: "perfil", ruta: "/perfil", titulo: "Mi perfil", descripcion: "Tus datos personales y de contacto.", roles: TODOS, estado: "provisional", modulo: "1. Usuarios, autenticación y permisos",
     incluira: ["Datos personales", "Contactos de emergencia"] },
 

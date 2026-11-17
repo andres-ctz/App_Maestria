@@ -40,6 +40,14 @@ export function obtenerAuthService(): AuthService {
   return demoHabilitado() ? authDemo : authNoDisponible
 }
 
+/**
+ * Cuentas de demostración disponibles para cambiar de cuenta durante las pruebas locales.
+ * Fuera del modo demostración devuelve una lista vacía: nunca debe ser una función pública.
+ */
+export function listarCuentasDemo(): Usuario[] {
+  return demoHabilitado() ? usuarios : []
+}
+
 export const mensajesError: Record<ErrorInicioSesion, string> = {
   credenciales: "No encontramos una cuenta con ese correo.",
   desactivada: "Esta cuenta está desactivada. Contacta al administrador.",

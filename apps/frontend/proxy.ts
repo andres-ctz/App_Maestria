@@ -17,10 +17,8 @@ export function proxy(request: NextRequest) {
 
   if (pathname === "/") return ir(sesion ? rutaInicial(sesion.rolActivo, sesion.cuenta) : "/login")
 
-  if (esRutaPublica(pathname)) {
-    if (sesion && pathname === "/login") return ir(rutaInicial(sesion.rolActivo, sesion.cuenta))
-    return NextResponse.next()
-  }
+  // /login se puede abrir con sesión activa: en la demostración sirve para cambiar de cuenta.
+  if (esRutaPublica(pathname)) return NextResponse.next()
 
   if (!sesion) {
     const destino = new URL("/login", request.url)
