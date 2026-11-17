@@ -25,3 +25,6 @@ Basado en los criterios de aceptación del v0.3 §22.
 - [ ] Las operaciones importantes quedan auditadas.
 - [ ] Interfaz adaptable a escritorio y móvil.
 - [ ] Respaldo y restauración documentados.
+- [ ] Las ofertas de vacante vencen y la lista de espera conserva su orden.
+- [ ] Las calificaciones respetan la escala de 0 a 100 y la nota mínima de 70 puntos.
+- [ ] La postulación solo usa los ocho estados confirmados.

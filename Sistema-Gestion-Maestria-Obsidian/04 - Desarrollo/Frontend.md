@@ -43,7 +43,18 @@ No existe backend. El inicio de sesión usa un proveedor de demostración detrá
 - Solo está activo en desarrollo. Con una compilación de producción local hay que activar `AUTH_DEMO=true` (ver `.env.example`). Sin esa variable no hay sesión posible.
 - La cookie de sesión no está firmada: **nunca debe desplegarse**.
 - La protección de rutas del frontend es experiencia de usuario. Los permisos reales se validan en el backend en una fase posterior.
-- El cambio de rol solo aparece en cuentas con varios roles.
+- El cambio de rol solo aparece en cuentas con varios roles. Cambiar de **rol** (misma cuenta) no es lo mismo que cambiar de **cuenta**.
+
+### Cambiar de cuenta durante las pruebas locales
+Solo existe en el modo de demostración; fuera de él las cuentas de demostración no se listan y la acción no hace nada.
+
+- **Menú de la cuenta (abajo a la izquierda):** «Cambiar de cuenta (demostración)» abre la lista de cuentas activas y entra con un clic, sin borrar cookies ni caché.
+- **Pantalla de inicio de sesión:** cada cuenta de demostración tiene un botón para entrar con un clic. Con una sesión activa, `/login` se puede abrir, avisa de quién está dentro y permite continuar, cerrar sesión o elegir otra cuenta.
+- **Cerrar sesión:** elimina la cookie de demostración y vuelve a `/login`.
+
+### Otros controles del encabezado
+- **Tema claro/oscuro:** el botón de tema también está en las pantallas de acceso. Su nombre accesible indica el tema activo y la acción; el tema elegido se conserva al navegar y al recargar.
+- **Notificaciones:** el centro de notificaciones pertenece a una fase posterior. El botón abre un aviso «Próximamente» y no muestra notificaciones ni contadores.
 
 ### Cuentas de demostración
 Los correos usan el dominio reservado `.example`. Todas las cuentas están sin contraseña.

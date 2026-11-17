@@ -2,13 +2,14 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-shell/app-sidebar"
 import { AppHeader } from "@/components/app-shell/app-header"
 import { SesionProvider } from "@/components/providers/sesion-provider"
+import { listarCuentasDemo } from "@/lib/auth/auth-service"
 import { requerirSesion } from "@/lib/auth/session"
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const sesion = await requerirSesion()
 
   return (
-    <SesionProvider cuenta={sesion.cuenta} rolActivo={sesion.rolActivo}>
+    <SesionProvider cuenta={sesion.cuenta} rolActivo={sesion.rolActivo} cuentasDemo={listarCuentasDemo()}>
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>

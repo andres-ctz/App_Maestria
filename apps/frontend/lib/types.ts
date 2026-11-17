@@ -12,16 +12,22 @@ export type Role = "admin" | "coordinador" | "tutor" | "postulante"
 
 export type RiskLevel = "bajo" | "medio" | "alto"
 
-/** Estados de la postulación según el v0.3 §6.3. La lista oficial sigue en revisión. */
-export type EstadoPostulacion =
-  | "borrador"
-  | "recibida"
-  | "en-revision"
-  | "pendiente-correccion"
-  | "validada"
-  | "admitida"
-  | "no-admitida"
-  | "en-lista-de-espera"
+/**
+ * Estados de la postulación: exactamente los ocho del v0.3 §6.3, confirmados por el equipo
+ * (decisión D-016). No existen los estados «En nivelación» ni «Retirada».
+ */
+export const ESTADOS_POSTULACION = [
+  "borrador",
+  "recibida",
+  "en-revision",
+  "pendiente-correccion",
+  "validada",
+  "admitida",
+  "no-admitida",
+  "en-lista-de-espera",
+] as const
+
+export type EstadoPostulacion = (typeof ESTADOS_POSTULACION)[number]
 
 /** Resultado de revisar un documento de postulación o una entrega de actividad. */
 export type EstadoRevision = "pendiente" | "en-correccion" | "aprobado" | "rechazado"
@@ -66,7 +72,6 @@ export interface Programa {
   nombre: string
   facultad: string
   modalidad: "Presencial" | "Virtual" | "Híbrida"
-  vacantes: number
   estado: "activo" | "borrador" | "cerrado"
 }
 
@@ -76,6 +81,8 @@ export interface Convocatoria {
   nombre: string
   inicio: string
   fin: string
+  /** Cupos de la convocatoria (v0.3 §5.1). Los cupos no pertenecen al programa. */
+  cupos: number
   inscritos: number
   estado: "abierta" | "en-curso" | "cerrada"
 }
