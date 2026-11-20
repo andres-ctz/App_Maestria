@@ -8,7 +8,7 @@ Está en `apps/frontend`. Nació del boceto de v0 (`Boceto de fronted/sistema-de
 Se ejecutan desde `apps/frontend` con pnpm:
 
 - `pnpm install`: instala las dependencias.
-- `pnpm dev`: servidor de desarrollo.
+- `pnpm dev`: servidor de desarrollo. Abre la aplicación en **http://localhost:3000** (ver «Si los botones no responden en `pnpm dev`» más abajo).
 - `pnpm typecheck`: comprobación de tipos.
 - `pnpm test`: pruebas automáticas (Vitest).
 - `pnpm build`: compilación de producción.
@@ -54,7 +54,13 @@ Solo existe en el modo de demostración; fuera de él las cuentas de demostraci�
 
 ### Otros controles del encabezado
 - **Tema claro/oscuro:** el botón de tema también está en las pantallas de acceso. Su nombre accesible indica el tema activo y la acción; el tema elegido se conserva al navegar y al recargar.
-- **Notificaciones:** el centro de notificaciones pertenece a una fase posterior. El botón abre un aviso «Próximamente» y no muestra notificaciones ni contadores.
+- **Notificaciones:** el centro de notificaciones pertenece a una fase posterior. La campana abre un panel flotante anclado a ella, a la derecha y encima del contenido, con el título «Notificaciones», la etiqueta «Próximamente» y un mensaje. No cambia de ruta, no muestra notificaciones ni contadores, y se cierra al pulsar de nuevo la campana, al pulsar fuera y con Escape.
+
+### Si los botones no responden en `pnpm dev`
+Solo ocurre en el servidor de desarrollo y tiene dos causas conocidas:
+
+1. **La dirección con la que abres la aplicación.** Next 16 bloquea sus recursos de desarrollo cuando el origen no es `localhost`. La página se ve, los enlaces y formularios funcionan, pero el JavaScript no se activa y los botones (tema, campana, menú de la cuenta) no responden. En la consola del navegador aparece «Blocked cross-origin request to Next.js dev resource». Abre **http://localhost:3000**. `127.0.0.1` ya está permitido; para otra dirección (la URL «Network», un teléfono o un puerto reenviado) define `ALLOWED_DEV_ORIGINS` (ver `.env.example`).
+2. **El indicador de desarrollo de Next** (la «N» flotante) se colocaba abajo a la izquierda y tapaba «Menú de la cuenta», así que el primer clic no lo abría, ni «Cambiar de cuenta» ni «Cerrar sesión». Ahora está abajo a la derecha. Solo existe en `pnpm dev`.
 
 ### Cuentas de demostración
 Los correos usan el dominio reservado `.example`. Todas las cuentas están sin contraseña.

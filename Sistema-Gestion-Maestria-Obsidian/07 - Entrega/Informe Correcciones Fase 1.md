@@ -91,7 +91,7 @@ Probé el botón en un **navegador real** (Chromium sin interfaz), con la compil
 ## 8. Botón de notificaciones
 - Sigue en el mismo lugar y con el mismo diseño.
 - Se quitó el contador rojo y los vencimientos de ejemplo, que se presentaban como notificaciones reales.
-- Ahora abre un panel con la etiqueta «Próximamente» y el texto «El centro de notificaciones se habilitará en una fase posterior. Por ahora no hay avisos que mostrar», con un enlace a la pantalla provisional del módulo. El nombre accesible es «Notificaciones (próximamente)».
+- Ahora abre un panel con la etiqueta «Próximamente» y el texto «El centro de notificaciones se habilitará en una fase posterior. Por ahora no hay avisos que mostrar», (el enlace a la pantalla provisional se retiró después; ver [[Informe Botones de tema y notificaciones]]). El nombre accesible es «Notificaciones (próximamente)».
 - Verificado en escritorio y en un viewport móvil de 390 píxeles (el panel queda dentro de la pantalla).
 - **No pude reproducir que el botón no abriera nada:** en mi navegador de pruebas ya abría un panel (con los vencimientos de ejemplo).
 - Cuando exista el módulo 14 deberá conectarse con los tipos y las preferencias del Documento Maestro.
