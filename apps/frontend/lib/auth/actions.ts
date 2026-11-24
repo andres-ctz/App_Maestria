@@ -3,8 +3,8 @@
 import { cookies, headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { destinoSeguro, rutaInicial } from "@/lib/access"
-import { mensajesError, obtenerAuthService } from "@/lib/auth/auth-service"
-import { COOKIE_SESION } from "@/lib/auth/constants"
+import { listarCuentasDemo, mensajesError, obtenerAuthService } from "@/lib/auth/auth-service"
+import { COOKIE_SESION, demoHabilitado } from "@/lib/auth/constants"
 import { rolInicial, serializarSesion } from "@/lib/auth/sesion"
 import { leerSesion } from "@/lib/auth/session"
 import type { Role } from "@/lib/types"
@@ -45,7 +45,21 @@ export async function iniciarSesionAction(_previo: EstadoLogin, datos: FormData)
   redirect(destinoSeguro(siguiente, rol, cuenta) ?? rutaInicial(rol, cuenta))
 }
 
-/** Solo permite cambiar a un rol que la cuenta ya tiene. */
+/**
+ * Cambia de CUENTA durante las pruebas locales (no confundir con cambiar de rol).
+ * Solo funciona en modo demostración y solo con cuentas activas; fuera de él no hace nada.
+ */
+export async function cambiarCuentaDemoAction(cuentaId: string): Promise<void> {
+  if (!demoHabilitado()) redirect("/login")
+  const cuenta = listarCuentasDemo().find((u) => u.id === cuentaId && u.estado === "activo")
+  if (!cuenta) redirect("/login")
+  const rol = rolInicial(cuenta)
+  const almacen = await cookies()
+  almacen.set(COOKIE_SESION, serializarSesion(cuenta.id, rol), await opcionesCookie())
+  redirect(rutaInicial(rol, cuenta))
+}
+
+/** Cambia de ROL dentro de la misma cuenta. Solo permite un rol que la cuenta ya tiene. */
 export async function cambiarRolAction(rol: Role): Promise<void> {
   const sesion = await leerSesion()
   if (!sesion || !sesion.cuenta.roles.includes(rol)) redirect("/login")

@@ -20,7 +20,7 @@ export function ToneBadge({ tone, children, className }: { tone: Tone; children:
   )
 }
 
-/** Estados de la postulación (v0.3 §6.3). La lista oficial sigue en revisión. */
+/** Los ocho estados de la postulación del v0.3 §6.3, confirmados por el equipo (D-016). */
 const postulacionMap: Record<EstadoPostulacion, { label: string; tone: Tone }> = {
   borrador: { label: "Borrador", tone: "neutral" },
   recibida: { label: "Recibida", tone: "info" },

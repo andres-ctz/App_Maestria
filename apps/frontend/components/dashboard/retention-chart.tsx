@@ -11,7 +11,7 @@ const config = {
 
 export function RetentionChart() {
   return (
-    <Card className="lg:col-span-2">
+    <Card className="min-w-0 lg:col-span-2">
       <CardHeader>
         <CardTitle>Tendencia de retención</CardTitle>
         <CardDescription>Porcentaje de estudiantes activos por semana del curso preparatorio</CardDescription>
@@ -27,7 +27,7 @@ export function RetentionChart() {
             </defs>
             <CartesianGrid vertical={false} />
             <XAxis dataKey="semana" tickLine={false} axisLine={false} tickMargin={8} />
-            <YAxis domain={[80, 100]} tickLine={false} axisLine={false} width={32} tickFormatter={(v) => `${v}%`} />
+            <YAxis domain={[80, 100]} tickLine={false} axisLine={false} width={44} tickFormatter={(v) => `${v}%`} />
             <ChartTooltip content={<ChartTooltipContent indicator="line" />} />
             <Area
               dataKey="retencion"

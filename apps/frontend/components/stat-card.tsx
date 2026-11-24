@@ -28,7 +28,7 @@ export function StatCard({
       </CardHeader>
       <CardFooter className="gap-2 text-xs text-muted-foreground">
         {trend && (
-          <span className={cn("font-medium tabular-nums", trend.positive ? "text-success" : "text-destructive")}>
+          <span className={cn("shrink-0 whitespace-nowrap font-medium tabular-nums", trend.positive ? "text-success" : "text-destructive")}>
             {trend.value}
           </span>
         )}

@@ -30,3 +30,7 @@ Cubren las áreas que pide el v0.3 §21.5. Las reglas críticas deben tener prue
 | QA-21 | Operación auditable (por ejemplo, reasignar un tutor) | Registro con usuario, acción y valores | Pendiente |
 | QA-22 | Exportación PDF/Excel | Datos coinciden con la BD y respetan el alcance | Pendiente |
 | QA-23 | Instalación limpia | Arranque según README | Pendiente |
+| QA-24 | Una oferta de vacante vence sin respuesta | Pasa a vencida y el coordinador continúa con la siguiente persona sin alterar el orden de la lista | Pendiente |
+| QA-25 | El postulante acepta o rechaza una oferta vigente | Se registra la respuesta | Pendiente |
+| QA-26 | Calificaciones de 69 y de 70 puntos en la escala de 0 a 100 | 69 no alcanza la nota mínima y 70 sí | Pendiente |
+| QA-27 | Estados de una postulación | Solo existen los ocho estados confirmados (no «En nivelación» ni «Retirada») | Pendiente |

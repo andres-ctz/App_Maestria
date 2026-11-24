@@ -11,7 +11,7 @@ export function AtRiskCard() {
   const atRisk = estudiantes.filter((p) => p.riesgo === "alto")
 
   return (
-    <Card className="lg:col-span-2">
+    <Card className="min-w-0 lg:col-span-2">
       <CardHeader>
         <CardTitle>Estudiantes que requieren intervención</CardTitle>
         <CardDescription>Riesgo alto según reglas configuradas. Pasa el cursor para ver los motivos.</CardDescription>

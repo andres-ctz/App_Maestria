@@ -1,7 +1,8 @@
 # Documento Maestro de Requisitos — App Maestría
 
-**Versión:** 0.3  
+**Versión:** 0.3.1  
 **Estado:** Versión consolidada para revisión y aprobación  
+**Última actualización:** 15/11/2026 (decisiones confirmadas por el equipo D-013 a D-019; la copia de la v0.3 original está en `historial/`)  
 **Proyecto:** Sistema de gestión de cursos preparatorios para programas de maestría  
 **Documento:** Requisitos funcionales, reglas de negocio y restricciones del sistema
 
@@ -95,7 +96,7 @@ No se considera parte de la primera implementación:
 
 - Integración con sistemas externos de admisión o gestión universitaria, salvo que posteriormente se apruebe.
     
-- Envío de correos mediante un proveedor real durante el desarrollo local.
+- Envío de correos mediante un proveedor real durante el desarrollo local. Las notificaciones internas y los correos simulados sí se utilizan en el desarrollo local; en esta etapa no se envían correos reales *(decisión D-013)*.
     
 - Aplicaciones móviles nativas.
     
@@ -106,6 +107,10 @@ No se considera parte de la primera implementación:
 - Modificación individual de permisos por usuario.
     
 - Automatización de decisiones institucionales que requieran aprobación humana.
+    
+- Proceso académico de nivelación. Podrá evaluarse en una versión futura *(decisión D-018)*.
+    
+- Constructor de formularios dinámicos *(decisión D-017)*.
     
 - Despliegue definitivo en producción antes de la validación del cliente.
     
@@ -743,9 +748,11 @@ Un requisito podrá admitir varios archivos cuando corresponda.
 
 La estructura de datos no deberá impedir que un postulante adjunte varios archivos para cumplir un mismo requisito.
 
+La estructura del formulario de postulación es fija. Los requisitos y los documentos solicitados son configurables por convocatoria. No se desarrollará un constructor de formularios dinámicos *(decisión D-017, confirmada por el equipo el 15/11/2026)*.
+
 ## 6.3. Estados de postulación
 
-La postulación deberá contar con estados que permitan identificar su progreso, incluyendo:
+La postulación contará con los siguientes estados, que permiten identificar su progreso. Son exactamente estos ocho estados *(decisión D-016, confirmada por el equipo el 15/11/2026)*:
 
 - Borrador.
     
@@ -763,6 +770,8 @@ La postulación deberá contar con estados que permitan identificar su progreso,
     
 - En lista de espera.
     
+
+No se incorporan los estados «En nivelación» ni «Retirada».
 
 Los cambios de estado deberán conservar su historial.
 
@@ -861,6 +870,21 @@ La referencia para determinar el orden será la fecha y hora en que se validaron
 El sistema deberá conservar ese momento de validación y no modificarlo por cambios posteriores que no alteren la condición de elegibilidad.
 
 La promoción desde la lista de espera deberá respetar la disponibilidad real de cupos y registrar la operación.
+
+## 7.4. Ofertas de vacantes
+
+Se conserva el mecanismo de ofertas de vacantes con plazo de respuesta *(decisión D-019, confirmada por el equipo el 15/11/2026)*.
+
+- El coordinador gestiona la oferta y establece el plazo de respuesta.
+    
+- El postulante puede aceptar o rechazar la oferta.
+    
+- Si no responde antes del vencimiento, la oferta vence y el coordinador puede continuar con la siguiente persona de la lista de espera.
+    
+- Debe conservarse el orden de la lista de espera (§7.3).
+    
+
+Los campos y estados de la oferta, y su relación con la asignación de cupos (§7.2), se definirán en el modelo de datos. Antecedente: Documento Maestro v0.2, §6.2.
 
 ---
 
@@ -1581,6 +1605,14 @@ El documento incluirá:
 
 No se incluirá código QR ni mecanismo adicional de verificación en esta primera versión.
 
+## 12.9. Escala de calificaciones y nota mínima
+
+La escala institucional de calificaciones es de 0 a 100 *(decisión D-014, confirmada por el equipo el 15/11/2026)*.
+
+La nota mínima de aprobación es de 70 puntos *(decisión D-015, confirmada por el equipo el 15/11/2026)*.
+
+La escala institucional es independiente de la distribución interna de ponderaciones de las actividades y evaluaciones (§12.2). Sigue pendiente confirmar si la nota mínima puede variar por programa o asignatura (§23).
+
 ---
 
 # 13. Seguimiento académico y riesgos
@@ -2272,8 +2304,7 @@ Los siguientes puntos no deben resolverse mediante suposiciones del equipo de de
 
 |Tema|Pendiente|
 |---|---|
-|Escala de calificaciones|Confirmar la escala institucional definitiva.|
-|Nota mínima de aprobación|Confirmar el valor institucional y si puede variar por programa o asignatura.|
+|Nota mínima de aprobación|La nota mínima institucional es de 70 puntos (D-015). Confirmar si puede variar por programa o asignatura.|
 |Redistribución de ponderaciones|Definir el detalle matemático de la distribución dinámica dentro de cada categoría.|
 |Tamaño máximo de archivos|Establecer el límite técnico institucional.|
 |Riesgo académico|Definir umbrales, criterios y frecuencia de cálculo.|
@@ -2281,6 +2312,8 @@ Los siguientes puntos no deben resolverse mediante suposiciones del equipo de de
 |Rendimiento|Definir objetivos cuantitativos de respuesta y capacidad.|
 |Despliegue|Definir infraestructura y proveedor después de validar el sistema local.|
 |Integraciones externas|Determinar si se requieren conexiones con plataformas institucionales existentes.|
+|Comprobante de matrícula y retiros|No hay decisión definitiva sobre su inclusión; no se consideran funcionalidad aprobada.|
+|Ofertas de vacantes|Definir los campos y estados de la oferta y su relación con la asignación de cupos (§7.4).|
 
 Mientras no exista una decisión formal, el sistema deberá evitar asumir valores definitivos para estos puntos.
 
@@ -2316,7 +2349,10 @@ Estos documentos deberán mantenerse coherentes con esta versión del Documento 
 |0.1|Primera definición del alcance y funcionalidades del sistema.|
 |0.2|Ampliación de requisitos funcionales y módulos del sistema.|
 |0.3|Consolidación de decisiones funcionales, reglas de negocio, permisos, restricciones y coherencia con el modelo de datos.|
+|0.3.1|Incorporación de las decisiones confirmadas por el equipo el 15/11/2026 (D-013 a D-019): correo simulado en desarrollo local, escala de 0 a 100, nota mínima de 70 puntos, ocho estados de postulación, formularios de estructura fija, nivelación fuera de alcance y ofertas de vacantes.|
 
 **Estado de la versión 0.3:** documento consolidado para revisión y aprobación antes de iniciar la implementación.
+
+**Estado de la versión 0.3.1:** es la v0.3 con las decisiones confirmadas del 15/11/2026. No cambia el estado de aprobación de las decisiones D-001 a D-012 del Registro de decisiones.
 
 **Regla de control:** cualquier cambio funcional posterior deberá documentarse, justificarse y reflejarse en los documentos complementarios que correspondan. Las herramientas de asistencia de programación no podrán modificar decisiones funcionales por cuenta propia.

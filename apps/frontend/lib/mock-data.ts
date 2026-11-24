@@ -38,18 +38,18 @@ export const usuarios: Usuario[] = [
 export const tutores = usuarios.filter((u) => u.roles.includes("tutor") && u.estado === "activo")
 
 export const programas: Programa[] = [
-  { id: "pr-1", nombre: "Maestría en Gestión Pública", facultad: "Ciencias Sociales", modalidad: "Híbrida", vacantes: 40, estado: "activo" },
-  { id: "pr-2", nombre: "Maestría en Educación Superior", facultad: "Educación", modalidad: "Virtual", vacantes: 60, estado: "activo" },
-  { id: "pr-3", nombre: "Maestría en Ingeniería de Software", facultad: "Ingeniería", modalidad: "Presencial", vacantes: 30, estado: "activo" },
-  { id: "pr-4", nombre: "Maestría en Salud Pública", facultad: "Ciencias de la Salud", modalidad: "Híbrida", vacantes: 35, estado: "borrador" },
+  { id: "pr-1", nombre: "Maestría en Gestión Pública", facultad: "Ciencias Sociales", modalidad: "Híbrida", estado: "activo" },
+  { id: "pr-2", nombre: "Maestría en Educación Superior", facultad: "Educación", modalidad: "Virtual", estado: "activo" },
+  { id: "pr-3", nombre: "Maestría en Ingeniería de Software", facultad: "Ingeniería", modalidad: "Presencial", estado: "activo" },
+  { id: "pr-4", nombre: "Maestría en Salud Pública", facultad: "Ciencias de la Salud", modalidad: "Híbrida", estado: "borrador" },
 ]
 
 export const convocatorias: Convocatoria[] = [
-  { id: "cv-1", programaId: "pr-1", nombre: "GP 2026-II", inicio: "2026-09-01", fin: "2026-12-15", inscritos: 38, estado: "en-curso" },
-  { id: "cv-2", programaId: "pr-2", nombre: "ES 2026-II", inicio: "2026-09-15", fin: "2026-12-20", inscritos: 52, estado: "en-curso" },
-  { id: "cv-3", programaId: "pr-3", nombre: "IS 2026-II", inicio: "2026-10-01", fin: "2027-01-30", inscritos: 27, estado: "en-curso" },
-  { id: "cv-4", programaId: "pr-4", nombre: "SP 2027-I", inicio: "2027-01-10", fin: "2027-04-15", inscritos: 0, estado: "abierta" },
-  { id: "cv-5", programaId: "pr-1", nombre: "GP 2026-I", inicio: "2026-03-01", fin: "2026-06-30", inscritos: 41, estado: "cerrada" },
+  { id: "cv-1", programaId: "pr-1", nombre: "GP 2026-II", inicio: "2026-09-01", fin: "2026-12-15", cupos: 40, inscritos: 38, estado: "en-curso" },
+  { id: "cv-2", programaId: "pr-2", nombre: "ES 2026-II", inicio: "2026-09-15", fin: "2026-12-20", cupos: 60, inscritos: 52, estado: "en-curso" },
+  { id: "cv-3", programaId: "pr-3", nombre: "IS 2026-II", inicio: "2026-10-01", fin: "2027-01-30", cupos: 30, inscritos: 27, estado: "en-curso" },
+  { id: "cv-4", programaId: "pr-4", nombre: "SP 2027-I", inicio: "2027-01-10", fin: "2027-04-15", cupos: 35, inscritos: 0, estado: "abierta" },
+  { id: "cv-5", programaId: "pr-1", nombre: "GP 2026-I", inicio: "2026-03-01", fin: "2026-06-30", cupos: 45, inscritos: 41, estado: "cerrada" },
 ]
 
 export const cursos: Curso[] = [
