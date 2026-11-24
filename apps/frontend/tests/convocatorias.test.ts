@@ -22,6 +22,12 @@ describe("convocatorias", () => {
     }
   })
 
+  it("en cada convocatoria de ejemplo el inicio es anterior al fin", () => {
+    for (const c of convocatorias) {
+      expect(new Date(c.inicio).getTime(), c.id).toBeLessThan(new Date(c.fin).getTime())
+    }
+  })
+
   it("los cupos viven en la convocatoria y no en el programa", () => {
     for (const c of convocatorias) {
       expect(typeof c.cupos, c.id).toBe("number")
