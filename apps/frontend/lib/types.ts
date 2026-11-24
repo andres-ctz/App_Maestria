@@ -29,6 +29,23 @@ export const ESTADOS_POSTULACION = [
 
 export type EstadoPostulacion = (typeof ESTADOS_POSTULACION)[number]
 
+/**
+ * Estados de la convocatoria: los ocho del v0.3 §5.2. Las reglas de visibilidad y de
+ * transición entre estados (suspensión, cancelación) siguen pendientes de decisión.
+ */
+export const ESTADOS_CONVOCATORIA = [
+  "borrador",
+  "programada",
+  "abierta",
+  "preparacion",
+  "en-curso",
+  "cerrada",
+  "suspendida",
+  "cancelada",
+] as const
+
+export type EstadoConvocatoria = (typeof ESTADOS_CONVOCATORIA)[number]
+
 /** Resultado de revisar un documento de postulación o una entrega de actividad. */
 export type EstadoRevision = "pendiente" | "en-correccion" | "aprobado" | "rechazado"
 
@@ -84,7 +101,7 @@ export interface Convocatoria {
   /** Cupos de la convocatoria (v0.3 §5.1). Los cupos no pertenecen al programa. */
   cupos: number
   inscritos: number
-  estado: "abierta" | "en-curso" | "cerrada"
+  estado: EstadoConvocatoria
 }
 
 export interface Curso {
