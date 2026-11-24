@@ -180,6 +180,8 @@ Tendrá acceso global a:
 - Configuración institucional.
     
 - Auditoría y reportes.
+
+El administrador podrá consultar, gestionar y modificar la información de todos los módulos en todo momento *(decisión D-037)*. Se mantienen las reglas de integridad del sistema: las calificaciones publicadas son definitivas (D-006), la auditoría no se modifica y las cuentas protegidas siguen las reglas de §2.9.
     
 
 ### Coordinador
@@ -695,8 +697,8 @@ Borrador → Programada → Abierta → Preparación → En curso → Cerrada.
 - Programada → Abierta: automático en la fecha de apertura de postulaciones.
 - Abierta → Preparación: automático en la fecha de cierre de postulaciones. Corresponde al cierre de la convocatoria descrito en §6.6.
 - Preparación → En curso y En curso → Cerrada: manuales, por el coordinador o el administrador.
-- **Suspensión:** solo total, desde Programada, Abierta, Preparación o En curso, con motivo obligatorio. Se conserva el estado anterior y, al reanudar, la convocatoria vuelve a él.
-- **Cancelación:** desde cualquier estado salvo Cerrada, con motivo obligatorio. Es definitiva.
+- **Suspensión:** solo total, desde Programada, Abierta, Preparación o En curso, con motivo obligatorio. Se conserva el estado anterior y, al reanudar, la convocatoria vuelve a él. Solo el administrador podrá suspender y reanudar *(decisión D-036)*.
+- **Cancelación:** desde cualquier estado salvo Cerrada, con motivo obligatorio. Es definitiva. Solo el administrador podrá cancelar *(decisión D-036)*.
 - Todos los cambios de estado quedarán registrados en auditoría.
 
 ### Visibilidad en el catálogo público *(decisión D-025)*
@@ -714,7 +716,7 @@ Borrador → Programada → Abierta → Preparación → En curso → Cerrada.
 
 ### Duplicación *(decisión D-027)*
 
-Una convocatoria podrá duplicarse. La copia nace en Borrador con su configuración (requisitos, documentos solicitados y estructura), sin fechas, postulaciones ni estudiantes.
+Una convocatoria podrá duplicarse. La copia nace en Borrador con su configuración (requisitos, documentos solicitados y estructura), sin fechas, postulaciones ni estudiantes. Solo el administrador podrá duplicar convocatorias *(decisión D-036)*.
 
 ## 5.3. Documentos de convocatoria
 
@@ -929,7 +931,7 @@ Se conserva el mecanismo de ofertas de vacantes con plazo de respuesta *(decisi�
 
 Detalle de la oferta *(decisión D-032)*:
 
-- **Estados:** Pendiente, Aceptada, Rechazada, Vencida y Anulada. El coordinador puede anular una oferta indicando el motivo.
+- **Estados:** Pendiente, Aceptada, Rechazada, Vencida y Anulada. El coordinador puede anular una oferta indicando el motivo. El administrador puede gestionar todas las ofertas *(decisión D-037)*.
 - **Datos:** postulación, convocatoria, quién la creó, fecha de envío, fecha límite de respuesta, estado, fecha de respuesta y motivo de anulación.
 - **Relación con los cupos:** el cupo se reserva al enviar la oferta. Mientras esté Pendiente, nadie más puede ocuparlo. Si se acepta, pasa a ser una asignación (§7.2); si se rechaza, vence o se anula, el cupo se libera.
 
@@ -972,7 +974,7 @@ Al registrar la matrícula se generará un comprobante en PDF con un código ún
     
 - Los cambios de estado deberán quedar registrados.
 
-- La matrícula podrá pasar a «Retirada», con motivo y fecha. No existe la reincorporación: quien vuelva deberá matricularse de nuevo en otra convocatoria *(decisión D-033)*.
+- La matrícula podrá pasar a «Retirada», con motivo y fecha. No existe la reincorporación: quien vuelva deberá matricularse de nuevo en otra convocatoria *(decisión D-033)*. El retiro lo registran el administrador o el coordinador del programa *(decisión D-035)*.
     
 
 ## 8.3. Acceso del estudiante
@@ -1021,7 +1023,7 @@ Cada curso podrá incluir:
 
 Las fechas deberán estar dentro del período académico correspondiente.
 
-Los cursos podrán duplicarse: la copia conserva la estructura (módulos, asignaturas y configuración) sin fechas ni estudiantes. No existen plantillas de curso aparte *(decisión D-027)*.
+Los cursos podrán duplicarse: la copia conserva la estructura (módulos, asignaturas y configuración) sin fechas ni estudiantes. No existen plantillas de curso aparte *(decisión D-027)*. Solo el administrador podrá duplicar cursos *(decisión D-036)*.
 
 ## 9.2. Estructura académica
 
@@ -2403,12 +2405,12 @@ Estos documentos deberán mantenerse coherentes con esta versión del Documento 
 |0.2|Ampliación de requisitos funcionales y módulos del sistema.|
 |0.3|Consolidación de decisiones funcionales, reglas de negocio, permisos, restricciones y coherencia con el modelo de datos.|
 |0.3.1|Incorporación de las decisiones confirmadas por el equipo el 15/11/2026 (D-013 a D-019): correo simulado en desarrollo local, escala de 0 a 100, nota mínima de 70 puntos, ocho estados de postulación, formularios de estructura fija, nivelación fuera de alcance y ofertas de vacantes.|
-|0.3.2|Incorporación de las decisiones del equipo del 24/11/2026 (D-022 a D-034): stack confirmado, catálogo de tipos de documento y modalidades fijas, estados del programa, flujo y visibilidad de las convocatorias, duplicación, período adicional de revisión y rechazo automático, retiro de la postulación, cálculo de cupos, ofertas de vacante, y comprobante y retiro de matrícula. Aprobación de D-001 a D-008.|
+|0.3.2|Incorporación de las decisiones del equipo del 24/11/2026 (D-022 a D-037): stack confirmado, catálogo de tipos de documento y modalidades fijas, estados del programa, flujo y visibilidad de las convocatorias, duplicación, período adicional de revisión y rechazo automático, retiro de la postulación, cálculo de cupos, ofertas de vacante, comprobante y retiro de matrícula, y permisos del administrador. Aprobación de D-001 a D-008.|
 
 **Estado de la versión 0.3:** documento consolidado para revisión y aprobación antes de iniciar la implementación.
 
 **Estado de la versión 0.3.1:** es la v0.3 con las decisiones confirmadas del 15/11/2026. No cambia el estado de aprobación de las decisiones D-001 a D-012 del Registro de decisiones.
 
-**Estado de la versión 0.3.2:** es la v0.3.1 con las decisiones del equipo del 24/11/2026 (D-022 a D-034). Ese día el equipo también aprobó las decisiones D-001 a D-008.
+**Estado de la versión 0.3.2:** es la v0.3.1 con las decisiones del equipo del 24/11/2026 (D-022 a D-037). Ese día el equipo también aprobó las decisiones D-001 a D-008.
 
 **Regla de control:** cualquier cambio funcional posterior deberá documentarse, justificarse y reflejarse en los documentos complementarios que correspondan. Las herramientas de asistencia de programación no podrán modificar decisiones funcionales por cuenta propia.

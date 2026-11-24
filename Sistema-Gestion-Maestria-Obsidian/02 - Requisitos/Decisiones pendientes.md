@@ -7,7 +7,7 @@
 > Correo simulado en el desarrollo local (D-013), escala de 0 a 100 (D-014), nota mínima de 70 puntos (D-015), los ocho estados de postulación (D-016), formularios de estructura fija (D-017), nivelación fuera de la primera versión (D-018) y ofertas de vacantes con plazo (D-019). El detalle está en [[Registro de decisiones]].
 
 > [!info] Ya decididas (24/11/2026) y retiradas de esta lista
-> Aprobación de D-001 a D-008, stack (D-022), catálogos (D-023), programas (D-024), visibilidad de convocatorias en el catálogo (D-025), flujo, suspensión y cancelación de convocatorias (D-026), duplicación (D-027), período adicional de revisión (D-028), convocatorias solo de programas activos (D-029), retiro de la postulación (D-030), cálculo de cupos (D-031), ofertas de vacante (D-032), comprobante y retiro de matrícula (D-033), y rechazo automático al cierre (D-034).
+> Aprobación de D-001 a D-008, stack (D-022), catálogos (D-023), programas (D-024), visibilidad de convocatorias en el catálogo (D-025), flujo, suspensión y cancelación de convocatorias (D-026), duplicación (D-027), período adicional de revisión (D-028), convocatorias solo de programas activos (D-029), retiro de la postulación (D-030), cálculo de cupos (D-031), ofertas de vacante (D-032), comprobante y retiro de matrícula (D-033), rechazo automático al cierre (D-034) quién registra el retiro de matrícula (D-035), quién suspende, cancela y duplica (D-036) y el acceso global del administrador (D-037).
 
 Ninguno de los pendientes de abajo bloquea el desarrollo actual: se resuelven cuando se implementa el módulo que indica la última columna.
 
@@ -33,9 +33,6 @@ Detectadas al comparar ambos documentos. «No lo menciona» significa que el v0.
 
 ## C. Vacíos detectados en el v0.3
 - **Asignación de tutores:** §2.3 da al coordinador la «asignación y seguimiento de tutores» y §2.5 deja las reasignaciones al administrador. Falta delimitar quién asigna y quién reasigna. *(Módulo 9)*
-- **Retiro de matrícula (D-033):** está decidido que existe, pero no quién lo registra (administrador, coordinador o ambos). *(Módulo 7)*
-- **Permisos de convocatorias no precisados (D-026, D-027):** quién puede suspender, reanudar y cancelar (D-026 solo atribuye al coordinador y al administrador los cambios manuales del flujo) y quién duplica convocatorias y cursos. El alcance del coordinador depende de «Alcance del coordinador por programa» (sección D). *(Módulos 4 y 8)*
-- **Ofertas de vacante, papel del administrador:** la [[Matriz de permisos]] lo tiene «Por definir»; D-032 solo habla del coordinador. *(Módulo 6)*
 - **Recordatorios:** §14 no define anticipación ni frecuencia. *(Módulo 14)*
 - **Horario de envío de recordatorios:** sin definir. La zona horaria ya está definida (D-009). *(Módulo 14)*
 - **Nivel de riesgo para el estudiante:** el v0.3 no dice si lo ve. *(Módulo 13)*
@@ -47,7 +44,7 @@ Surgieron al construir la navegación y las pantallas. No se resolvieron: el fro
 | Tema | Qué se encontró | Qué hizo el frontend | Acción | Se resuelve en |
 |---|---|---|---|---|
 | Calificaciones del coordinador | La matriz de permisos dice «Por definir» para plantillas, planes, cierre y publicación | La ruta `/calificaciones` solo se habilita al administrador | Definir su papel | Módulo 12 |
-| Grupos | La matriz dice «Por definir» para administrador y coordinador | `/tutor/grupos` solo para el tutor | Definir | Módulo 9 |
+| Grupos | La matriz dice «Por definir» para el coordinador (el administrador tiene acceso global, D-037) | `/tutor/grupos` solo para el tutor | Definir | Módulo 9 |
 | Reasignaciones | Quién reasigna programas, cursos y asignaturas: «Por definir» para el coordinador | No hay pantalla | Definir | Módulo 9 |
 | Indicadores del panel ejecutivo | El v0.3 no los define | El panel muestra datos de demostración | Definir indicadores y fórmulas | Módulo 13 |
 | Recordatorios | No hay anticipación definida | Se quitó del código la secuencia 15·10·5·3·1 | Definir | Módulo 14 |
