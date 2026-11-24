@@ -59,8 +59,15 @@ Solo existe en el modo de demostración; fuera de él las cuentas de demostraci�
 ### Si los botones no responden en `pnpm dev`
 Solo ocurre en el servidor de desarrollo y tiene dos causas conocidas:
 
-1. **La dirección con la que abres la aplicación.** Next 16 bloquea sus recursos de desarrollo cuando el origen no es `localhost`. La página se ve, los enlaces y formularios funcionan, pero el JavaScript no se activa y los botones (tema, campana, menú de la cuenta) no responden. En la consola del navegador aparece «Blocked cross-origin request to Next.js dev resource». Abre **http://localhost:3000**. `127.0.0.1` ya está permitido; para otra dirección (la URL «Network», un teléfono o un puerto reenviado) define `ALLOWED_DEV_ORIGINS` (ver `.env.example`).
+1. **La dirección con la que abres la aplicación.** Next 16 bloquea sus recursos de desarrollo (`/_next/*`, incluido el canal de recarga en caliente) cuando el origen no es `localhost`. El HTML llega igual, así que la página se ve y los enlaces y formularios funcionan (son HTML normal), pero React no llega a **hidratar** la página: los botones que dependen de JavaScript (tema, campana, menú de la cuenta) no responden. El aviso «Blocked cross-origin request to Next.js dev resource … from "192.168.x.x"» aparece en la **terminal donde corre `pnpm dev`**, no en la consola del navegador.
+   - Solución: abre **http://localhost:3000**. `127.0.0.1` ya está permitido.
+   - Para otra dirección (la URL «Network», un teléfono o un puerto reenviado) define `ALLOWED_DEV_ORIGINS` antes de arrancar `pnpm dev`, por ejemplo `ALLOWED_DEV_ORIGINS=192.168.*.*` (cada `*` cubre un segmento; el puerto no cuenta). Ver `.env.example`.
+   - Comprobado el 24/11/2026 con Chromium: por `192.168.18.76:3000` sin la variable, la página se ve pero el tema y el menú no responden; con `ALLOWED_DEV_ORIGINS=192.168.*.*`, ambos responden.
+   - Solo afecta a `pnpm dev`. La compilación de producción no tiene esta restricción.
 2. **El indicador de desarrollo de Next** (la «N» flotante) se colocaba abajo a la izquierda y tapaba «Menú de la cuenta», así que el primer clic no lo abría, ni «Cambiar de cuenta» ni «Cerrar sesión». Ahora está abajo a la derecha. Solo existe en `pnpm dev`.
+
+### Si `pnpm dev` o `pnpm build` se detienen con un aviso de seguridad
+Next 16.4.3 consulta los avisos de seguridad de npm y, de vez en cuando, detiene el comando (código de salida 1) para recomendar actualizar. No es un error del proyecto: al repetir el comando continúa. La actualización de Next (los avisos se corrigen en 16.4.5) está pendiente de decisión del equipo; ver [[Informe Pulidos Fase 1]].
 
 ### Cuentas de demostración
 Los correos usan el dominio reservado `.example`. Todas las cuentas están sin contraseña.

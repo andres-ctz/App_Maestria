@@ -29,6 +29,8 @@ import { etiquetaRol } from "@/lib/access"
  */
 export function UserMenu() {
   const router = useRouter()
+  // Estado controlado: en la compilación de producción el `aria-expanded` que pone Base UI
+  // quedaba en "false" con el menú abierto. Se fija aquí y se pasa al disparador; no quitarlo.
   const [abierto, setAbierto] = useState(false)
   const { role, user, roles, cuentasDemo, switchRole, cambiarCuenta, cerrarSesion, cambiando } = useSesion()
   const cuentasActivas = cuentasDemo.filter((c) => c.estado === "activo")

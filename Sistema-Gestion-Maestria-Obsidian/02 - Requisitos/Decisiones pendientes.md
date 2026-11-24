@@ -55,7 +55,7 @@ Surgieron al construir la navegación y las pantallas. No se resolvieron: el fro
 | Indicadores del panel ejecutivo | El v0.3 no los define | El panel muestra datos de demostración | Definir indicadores y fórmulas | Módulo 13 |
 | Recordatorios | No hay anticipación definida | Se quitó del código la secuencia 15·10·5·3·1 | Definir | Módulo 14 |
 | Reglas de riesgo, tamaño y tipos de archivo | Siguen pendientes (§23) | Se muestran marcados como «Ejemplo · pendiente de definición institucional» | Definir | Módulos 13 y 15 |
-| Estados de la convocatoria | Los datos de ejemplo usan 3; el v0.3 define 8 | Sin cambios | Alinear al construir convocatorias | Módulo 4 |
+| Estados de la convocatoria | El v0.3 §5.2 define 8 estados y que las suspendidas y canceladas no aparecen en el catálogo público; no define las «reglas de publicación» de las cerradas, programadas y en curso ni las transiciones entre estados | El tipo `EstadoConvocatoria` ya tiene los 8 (24/11/2026); los datos de ejemplo usan 3 de ellos. No se implementó ninguna regla | Definir reglas de visibilidad y transición (ver también «Suspensión y cancelación» en la sección B) | Módulo 4 |
 | Nivel de riesgo visible para el estudiante | El v0.3 no lo dice | «Mi curso» no lo muestra | Decidir | Módulo 13 |
 | Alcance del coordinador por programa | La demostración no filtra por programas asignados | El coordinador ve todos los estudiantes | Definir el modelo de asignación | Módulos 1 y 9 |
 | Centro de notificaciones | Pertenece a una fase posterior | El botón de notificaciones indica «Próximamente» y no muestra avisos | Conectarlo con los tipos y preferencias del v0.3 | Módulo 14 |
