@@ -17,4 +17,4 @@ Versión local funcional y documentada, con datos ficticios y correos simulados.
 - Probar desde la primera semana.
 - Las herramientas de asistencia de programación no modifican decisiones funcionales por cuenta propia (v0.3 §25).
 
-Ver también [[Cronograma]], [[Equipo y responsabilidades]] y [[Backlog de tareas]].
+Ver también [[Cronograma]] y [[Backlog de tareas]].
