@@ -3,7 +3,7 @@
 > [!info] Regla de control (v0.3 §25)
 > Cualquier cambio funcional posterior debe documentarse, justificarse y reflejarse en los documentos complementarios. Las herramientas de asistencia no pueden modificar decisiones funcionales por cuenta propia.
 
-Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3; el equipo las aprobó el 24/11/2026. Las decisiones D-009 a D-012 las definió el equipo el 14/11/2026. Las decisiones D-013 a D-019 las confirmó el equipo el 15/11/2026 y ya están incorporadas en el Documento Maestro (v0.3.1). Las decisiones D-020 a D-033 las tomó el equipo el 24/11/2026. Las funcionales (D-023 a D-033) **aún no están incorporadas al Documento Maestro**, que sigue en la v0.3.1.
+Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3; el equipo las aprobó el 24/11/2026. Las decisiones D-009 a D-012 las definió el equipo el 14/11/2026. Las decisiones D-013 a D-019 las confirmó el equipo el 15/11/2026 y ya están incorporadas en el Documento Maestro (v0.3.1). Las decisiones D-020 a D-034 las tomó el equipo el 24/11/2026. Las decisiones D-022 a D-034 están incorporadas al Documento Maestro v0.3.2.
 
 | ID | Fecha | Decisión | Fuente | Aprobada por | Estado |
 |---|---|---|---|---|---|
@@ -40,5 +40,6 @@ Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Ma
 | D-031 | 24/11/2026 | Cupos: los ocupados y disponibles se calculan a partir de las asignaciones (§7.2); no se guardan. Disponibles = cupos de la convocatoria − asignados. El backend impide asignar más cupos de los que hay, aunque dos personas lo intenten a la vez | Vacío v0.3 §5.1 y §7.2 | Equipo | Definida |
 | D-032 | 24/11/2026 | Ofertas de vacante (completa D-019 y v0.3 §7.4). Estados: Pendiente, Aceptada, Rechazada, Vencida y Anulada (esta última por el coordinador, con motivo). Datos: postulación, convocatoria, quién la creó, fecha de envío, fecha límite, estado, fecha de respuesta y motivo de anulación. El cupo se reserva al ofrecer: mientras la oferta está Pendiente nadie más puede tomarlo; al aceptarla pasa a ser una asignación; si se rechaza, vence o se anula, se libera. Disponibles = cupos − asignados − ofertas pendientes (D-031) | Vacío v0.3 §7.4 y §23 | Equipo | Definida |
 | D-033 | 24/11/2026 | Matrículas: se genera un comprobante PDF con código único y verificable. Existe un retiro simple: la matrícula pasa a «Retirada», con motivo y fecha. No hay reincorporación: quien vuelva se matricula de nuevo en otra convocatoria | Discrepancia v0.2 §7 frente a v0.3 §8 y §23 | Equipo | Definida |
+| D-034 | 24/11/2026 | Rechazo automático al cierre (v0.3 §6.6): al terminar el período adicional de revisión (D-028), las postulaciones aún pendientes pasan a «No admitida» con el motivo «Revisión no completada al cierre», y se notifica a los afectados | Vacío v0.3 §6.6 | Equipo | Definida |
 
 Las discrepancias con el v0.2 que siguen abiertas están en [[Decisiones pendientes]].

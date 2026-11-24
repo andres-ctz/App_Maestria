@@ -3,7 +3,7 @@
 Sistema de gestión de cursos preparatorios para maestrías. Todo se escribe en **español**: código de dominio, interfaz y documentación.
 
 ## Fuente de verdad
-- `Sistema-Gestion-Maestria-Obsidian/02 - Requisitos/Documento_Maestro_Requisitos_App_Maestria.md` (v0.3.1).
+- `Sistema-Gestion-Maestria-Obsidian/02 - Requisitos/Documento_Maestro_Requisitos_App_Maestria.md` (v0.3.2).
 - `02 - Requisitos/Registro de decisiones.md` (D-001…D-019) y `02 - Requisitos/Decisiones pendientes.md`.
 - Estado del frontend: `04 - Desarrollo/Frontend.md`. Entregas e informes: `07 - Entrega/`.
 

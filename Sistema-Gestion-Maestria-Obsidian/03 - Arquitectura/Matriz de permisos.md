@@ -11,14 +11,20 @@ El alcance lo delimitan las asignaciones: el coordinador ve **sus programas**; e
 | Reasignar programas, cursos y asignaturas | Sí | Por definir | — | — | §2.5 |
 | Asignar y seguir tutores | Global | Sus programas (alcance por confirmar) | — | — | §2.3 |
 | Datos institucionales, logotipo y tema | Gestiona | — | — | — | §3 |
+| Catálogo de tipos de documento | Gestiona (D-023) | — | — | — | D-023 |
 | Facultades y períodos | Gestiona | Consulta períodos activos de sus programas | — | — | §4.1, §4.3–4.4 |
-| Programas | Gestiona; único que edita el código | Sus programas (crear/activar: por definir) | — | Los ve en el catálogo público | §4.2 |
-| Convocatorias | Gestiona | Sus programas | — | Catálogo público | §2.3, §5 |
+| Programas | Gestiona; único que crea, activa y desactiva (D-024); único que edita el código | Sus programas (no crea, activa ni desactiva: D-024) | — | Los ve en el catálogo público | §4.2 |
+| Convocatorias | Gestiona | Sus programas | — | Catálogo público (según estado, D-025) | §2.3, §5 |
+| Convocatorias: cambios manuales de estado | Sí | Sus programas | — | — | D-026 |
+| Convocatorias: suspender, reanudar y cancelar | Por confirmar (inferido de D-026) | Por confirmar (inferido de D-026) | — | — | D-026 no lo precisa |
+| Convocatorias: cambiar el período adicional de revisión | Sí | Sus programas | — | — | D-028 |
+| Duplicar convocatorias y cursos | Por confirmar | Por confirmar | — | — | D-027 no dice quién duplica |
 | Postulación: enviar y corregir | — | — | — | Las propias; corrige solo lo habilitado | §6.1, §6.4 |
 | Postulación: revisar documentos y pedir correcciones | Global | Sus programas | — | — | §6.5 |
 | Decisiones de admisión y cupos | Global | Sus programas | — | — | §2.3, §7 |
-| Ofertas de vacante | Por definir | Gestiona y fija el plazo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019 |
+| Ofertas de vacante | Por definir | Gestiona, fija el plazo y anula con motivo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019, D-032 |
 | Matrículas | Global | Sus programas | — | Consulta la propia | §2.3, §8 |
+| Retiro de matrícula | Por definir | Por definir | — | — | D-033 (quién lo registra no está decidido) |
 | Cursos, módulos y asignaturas | Global | Sus programas | Consulta los asignados | Consulta los matriculados | §2.3, §9 |
 | Grupos de estudiantes | Por definir | Por definir | Gestiona; único que mueve estudiantes | Se incorpora si el tutor lo permite | §9.4 |
 | Actividades y entregas | Global | Sus programas; puede reabrir | Crea, revisa y califica las de sus asignaturas | Entrega las propias | §10 |

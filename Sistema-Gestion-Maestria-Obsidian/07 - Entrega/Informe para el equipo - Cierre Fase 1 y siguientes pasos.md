@@ -1,6 +1,6 @@
 # Informe para el equipo — Cierre de la Fase 1 y siguientes pasos
 
-24/11/2026 · Rama `feature/fase-1-cimientos` · Referencia funcional: [[Documento_Maestro_Requisitos_App_Maestria]] v0.3.1
+24/11/2026 · Rama `feature/fase-1-cimientos` · Referencia funcional: [[Documento_Maestro_Requisitos_App_Maestria]] v0.3.2
 
 > [!summary] En una frase
 > El frontend de la Fase 1 queda cerrado y verificado. El siguiente paso **no es programar**: el equipo tiene que responder las preguntas de la sección 4 y confirmar el stack del backend antes de empezar la Fase 2 (sección 5).
@@ -71,6 +71,9 @@ Lo que sigue en esta sección es el planteamiento original, antes de decidir.
 - **Merge de `feature/fase-1-cimientos` a `main`:** pendiente de que el equipo lo apruebe. `main` tiene un commit del 15/11 («Distribucion de informacion») que esta rama no tiene.
 
 ## 4. Preguntas que el equipo o el cliente deben responder
+
+> [!success] Respondidas el 24/11/2026
+> Las 14 preguntas se respondieron con el equipo (D-022 a D-034, más la aprobación de D-001 a D-008). Ya están incorporadas al [[Documento_Maestro_Requisitos_App_Maestria]] **v0.3.2** y a [[Modelo de datos]], [[Matriz de permisos]] y [[API y endpoints]]. Quedan tres detalles nuevos en [[Decisiones pendientes]]: quién registra el retiro de matrícula; quién suspende, reanuda, cancela y duplica convocatorias; y el papel del administrador en las ofertas de vacante.
 Ninguna se resolvió por suposición. Están ordenadas por el módulo que bloquean, en el orden previsto de implementación ([[Alcance y objetivos]], que también está «por validar»).
 
 ### Antes de la Fase 2 (fundamentos, gestión institucional y facultades, programas y períodos)
@@ -84,7 +87,7 @@ Ninguna se resolvió por suposición. Están ordenadas por el módulo que bloque
 6. ~~**Publicación.**~~ **Resuelta (D-025):** borrador oculta; programada como «Próximamente»; abierta permite postular; preparación y en curso solo informativas; cerrada visible 30 días; suspendida y cancelada ocultas.
 7. ~~**Transiciones entre los 8 estados.**~~ **Resuelta (D-026):** flujo Borrador → Programada → Abierta → Preparación → En curso → Cerrada (apertura y cierre de postulaciones automáticos por fecha); suspensión total con motivo y reanudación; cancelación definitiva con motivo.
 8. ~~**Plantillas y duplicación.**~~ **Resuelta (D-027):** se duplican convocatorias y cursos (la copia nace en Borrador, sin fechas ni personas); no hay plantillas de curso aparte.
-9. ~~**Período adicional de revisión al cierre (§6.6).**~~ **Resuelta (D-028):** 7 días por defecto; lo pueden cambiar el coordinador y el administrador en cada convocatoria. Queda por confirmar el estado del rechazo automático (ver [[Decisiones pendientes]]).
+9. ~~**Período adicional de revisión al cierre (§6.6).**~~ **Resuelta (D-028):** 7 días por defecto; lo pueden cambiar el coordinador y el administrador en cada convocatoria. Al terminar, las pendientes pasan a «No admitida» (D-034).
 10. ~~**Programa inactivo.**~~ **Resuelta (D-029):** solo un programa activo puede tener convocatorias en marcha, y no se desactiva un programa con convocatorias en marcha. Datos de ejemplo corregidos.
 
 ### Antes de Postulaciones, admisiones y matrículas (Módulos 5 a 7)
