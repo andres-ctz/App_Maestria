@@ -972,7 +972,7 @@ Al registrar la matrícula se generará un comprobante en PDF con un código ún
     
 - Los cambios de estado deberán quedar registrados.
 
-- La matrícula podrá pasar a «Retirada», con motivo y fecha. No existe la reincorporación: quien vuelva deberá matricularse de nuevo en otra convocatoria *(decisión D-033)*.
+- La matrícula podrá pasar a «Retirada», con motivo y fecha. No existe la reincorporación: quien vuelva deberá matricularse de nuevo en otra convocatoria *(decisión D-033)*. El retiro lo registran el administrador o el coordinador del programa *(decisión D-035)*.
     
 
 ## 8.3. Acceso del estudiante

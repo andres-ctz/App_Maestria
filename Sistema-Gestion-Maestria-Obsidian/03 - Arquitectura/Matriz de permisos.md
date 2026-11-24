@@ -24,7 +24,7 @@ El alcance lo delimitan las asignaciones: el coordinador ve **sus programas**; e
 | Decisiones de admisión y cupos | Global | Sus programas | — | — | §2.3, §7 |
 | Ofertas de vacante | Por definir | Gestiona, fija el plazo y anula con motivo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019, D-032 |
 | Matrículas | Global | Sus programas | — | Consulta la propia | §2.3, §8 |
-| Retiro de matrícula | Por definir | Por definir | — | — | D-033 (quién lo registra no está decidido) |
+| Retiro de matrícula | Global | Sus programas | — | — | D-033, D-035 |
 | Cursos, módulos y asignaturas | Global | Sus programas | Consulta los asignados | Consulta los matriculados | §2.3, §9 |
 | Grupos de estudiantes | Por definir | Por definir | Gestiona; único que mueve estudiantes | Se incorpora si el tutor lo permite | §9.4 |
 | Actividades y entregas | Global | Sus programas; puede reabrir | Crea, revisa y califica las de sus asignaturas | Entrega las propias | §10 |
