@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Check, ChevronsUpDown, FlaskConical, LogOut, UserRound } from "lucide-react"
 import {
@@ -28,14 +29,15 @@ import { etiquetaRol } from "@/lib/access"
  */
 export function UserMenu() {
   const router = useRouter()
+  const [abierto, setAbierto] = useState(false)
   const { role, user, roles, cuentasDemo, switchRole, cambiarCuenta, cerrarSesion, cambiando } = useSesion()
   const cuentasActivas = cuentasDemo.filter((c) => c.estado === "activo")
 
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger render={<SidebarMenuButton size="lg" aria-label="Menú de la cuenta" />}>
+        <DropdownMenu open={abierto} onOpenChange={setAbierto}>
+          <DropdownMenuTrigger render={<SidebarMenuButton size="lg" aria-label="Menú de la cuenta" aria-expanded={abierto} />}>
             <Avatar>
               <AvatarFallback>{user.iniciales}</AvatarFallback>
             </Avatar>
