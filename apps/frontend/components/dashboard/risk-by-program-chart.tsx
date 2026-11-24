@@ -23,7 +23,7 @@ export function RiskByProgramChart({
   data: { programa: string; bajo: number; medio: number; alto: number }[]
 }) {
   return (
-    <Card>
+    <Card className="min-w-0">
       <CardHeader>
         <CardTitle>Riesgo por programa</CardTitle>
         <CardDescription>Distribución según motor de reglas</CardDescription>

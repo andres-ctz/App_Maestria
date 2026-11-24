@@ -48,7 +48,7 @@ export function EntregasInbox({
 
   return (
     <Tabs defaultValue="pendiente">
-      <TabsList>
+      <TabsList className="max-w-full overflow-x-auto">
         <TabsTrigger value="pendiente">
           Pendientes <Badge variant="secondary">{groups.pendiente.length}</Badge>
         </TabsTrigger>

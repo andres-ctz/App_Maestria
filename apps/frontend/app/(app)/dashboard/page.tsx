@@ -50,17 +50,17 @@ export default function DashboardPage() {
           </>
         }
       />
-      <section aria-label="Indicadores clave" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section aria-label="Indicadores clave" className="grid min-w-0 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Estudiantes matriculados" value={String(totalMatriculados)} hint="en convocatorias en curso" icon={Users} trend={{ value: "+12", positive: true }} />
         <StatCard label="Avance general" value={`${avanceGeneral}%`} hint="promedio de actividades completadas" icon={TrendingUp} trend={{ value: "+6 pp", positive: true }} />
         <StatCard label="Postulaciones en proceso" value={String(enProceso)} hint={`${porRevisar} entregas por revisar`} icon={FileClock} />
         <StatCard label="En riesgo crítico" value={String(altoRiesgo)} hint="requieren intervención tutorial" icon={AlertTriangle} trend={{ value: "+1", positive: false }} />
       </section>
-      <section className="grid gap-4 lg:grid-cols-3">
+      <section className="grid min-w-0 gap-4 lg:grid-cols-3">
         <RetentionChart />
         <RiskByProgramChart data={riskData} />
       </section>
-      <section className="grid gap-4 lg:grid-cols-3">
+      <section className="grid min-w-0 gap-4 lg:grid-cols-3">
         <AtRiskCard />
         <div className="flex flex-col gap-4">
           <AlertsCard />
