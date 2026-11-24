@@ -16,17 +16,17 @@ El alcance lo delimitan las asignaciones: el coordinador ve **sus programas**; e
 | Programas | Gestiona; único que crea, activa y desactiva (D-024); único que edita el código | Sus programas (no crea, activa ni desactiva: D-024) | — | Los ve en el catálogo público | §4.2 |
 | Convocatorias | Gestiona | Sus programas | — | Catálogo público (según estado, D-025) | §2.3, §5 |
 | Convocatorias: cambios manuales de estado | Sí | Sus programas | — | — | D-026 |
-| Convocatorias: suspender, reanudar y cancelar | Por confirmar (inferido de D-026) | Por confirmar (inferido de D-026) | — | — | D-026 no lo precisa |
+| Convocatorias: suspender, reanudar y cancelar | Sí (único) | No | — | — | D-036 |
 | Convocatorias: cambiar el período adicional de revisión | Sí | Sus programas | — | — | D-028 |
-| Duplicar convocatorias y cursos | Por confirmar | Por confirmar | — | — | D-027 no dice quién duplica |
+| Duplicar convocatorias y cursos | Sí (único) | No | — | — | D-027, D-036 |
 | Postulación: enviar y corregir | — | — | — | Las propias; corrige solo lo habilitado | §6.1, §6.4 |
 | Postulación: revisar documentos y pedir correcciones | Global | Sus programas | — | — | §6.5 |
 | Decisiones de admisión y cupos | Global | Sus programas | — | — | §2.3, §7 |
-| Ofertas de vacante | Por definir | Gestiona, fija el plazo y anula con motivo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019, D-032 |
+| Ofertas de vacante | Global (D-037) | Gestiona, fija el plazo y anula con motivo (sus programas) | — | Acepta o rechaza las propias | §7.4, D-019, D-032 |
 | Matrículas | Global | Sus programas | — | Consulta la propia | §2.3, §8 |
 | Retiro de matrícula | Global | Sus programas | — | — | D-033, D-035 |
 | Cursos, módulos y asignaturas | Global | Sus programas | Consulta los asignados | Consulta los matriculados | §2.3, §9 |
-| Grupos de estudiantes | Por definir | Por definir | Gestiona; único que mueve estudiantes | Se incorpora si el tutor lo permite | §9.4 |
+| Grupos de estudiantes | Global (D-037) | Por definir | Gestiona; único que mueve estudiantes | Se incorpora si el tutor lo permite | §9.4 |
 | Actividades y entregas | Global | Sus programas; puede reabrir | Crea, revisa y califica las de sus asignaturas | Entrega las propias | §10 |
 | Evaluaciones en línea | Global | Sus programas | Crea y califica las de sus asignaturas | Realiza las disponibles | §11 |
 | Plantillas de calificación | Gestiona | Por definir | — | — | §12.1 |

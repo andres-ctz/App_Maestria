@@ -3,7 +3,7 @@
 > [!info] Regla de control (v0.3 §25)
 > Cualquier cambio funcional posterior debe documentarse, justificarse y reflejarse en los documentos complementarios. Las herramientas de asistencia no pueden modificar decisiones funcionales por cuenta propia.
 
-Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3; el equipo las aprobó el 24/11/2026. Las decisiones D-009 a D-012 las definió el equipo el 14/11/2026. Las decisiones D-013 a D-019 las confirmó el equipo el 15/11/2026 y ya están incorporadas en el Documento Maestro (v0.3.1). Las decisiones D-020 a D-035 las tomó el equipo el 24/11/2026. Las decisiones D-022 a D-035 están incorporadas al Documento Maestro v0.3.2.
+Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Maestria]] v0.3; el equipo las aprobó el 24/11/2026. Las decisiones D-009 a D-012 las definió el equipo el 14/11/2026. Las decisiones D-013 a D-019 las confirmó el equipo el 15/11/2026 y ya están incorporadas en el Documento Maestro (v0.3.1). Las decisiones D-020 a D-037 las tomó el equipo el 24/11/2026. Las decisiones D-022 a D-037 están incorporadas al Documento Maestro v0.3.2.
 
 | ID | Fecha | Decisión | Fuente | Aprobada por | Estado |
 |---|---|---|---|---|---|
@@ -42,5 +42,7 @@ Las decisiones D-001 a D-008 figuran en el [[Documento_Maestro_Requisitos_App_Ma
 | D-033 | 24/11/2026 | Matrículas: se genera un comprobante PDF con código único y verificable. Existe un retiro simple: la matrícula pasa a «Retirada», con motivo y fecha. No hay reincorporación: quien vuelva se matricula de nuevo en otra convocatoria | Discrepancia v0.2 §7 frente a v0.3 §8 y §23 | Equipo | Definida |
 | D-034 | 24/11/2026 | Rechazo automático al cierre (v0.3 §6.6): al terminar el período adicional de revisión (D-028), las postulaciones aún pendientes pasan a «No admitida» con el motivo «Revisión no completada al cierre», y se notifica a los afectados | Vacío v0.3 §6.6 | Equipo | Definida |
 | D-035 | 24/11/2026 | El retiro de matrícula (D-033) lo pueden registrar el administrador (cualquier matrícula) y el coordinador (las de sus programas) | Pendiente detectado al alinear la Matriz de permisos | Equipo | Definida |
+| D-036 | 24/11/2026 | Solo el administrador puede suspender, reanudar y cancelar convocatorias, y duplicar convocatorias y cursos. Los demás cambios manuales del flujo (D-026) siguen siendo del coordinador y del administrador | Pendiente detectado al alinear la Matriz de permisos | Equipo | Definida |
+| D-037 | 24/11/2026 | El administrador tiene acceso y gestión global, en todo momento, sobre la información de todos los módulos (incluidas las ofertas de vacante y los grupos). Se mantienen las reglas de integridad: calificaciones publicadas definitivas (D-006), auditoría inalterable y cuentas protegidas (§2.9) | Indicada por el equipo; concreta el «acceso global» de v0.3 §2.3 | Equipo | Definida |
 
 Las discrepancias con el v0.2 que siguen abiertas están en [[Decisiones pendientes]].

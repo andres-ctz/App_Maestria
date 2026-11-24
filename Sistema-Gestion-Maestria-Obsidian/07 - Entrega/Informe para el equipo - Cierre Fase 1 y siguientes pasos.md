@@ -73,7 +73,7 @@ Lo que sigue en esta sección es el planteamiento original, antes de decidir.
 ## 4. Preguntas que el equipo o el cliente deben responder
 
 > [!success] Respondidas el 24/11/2026
-> Las 14 preguntas se respondieron con el equipo (D-022 a D-034, más la aprobación de D-001 a D-008). Ya están incorporadas al [[Documento_Maestro_Requisitos_App_Maestria]] **v0.3.2** y a [[Modelo de datos]], [[Matriz de permisos]] y [[API y endpoints]]. Quedan dos detalles nuevos en [[Decisiones pendientes]]: quién suspende, reanuda, cancela y duplica convocatorias; y el papel del administrador en las ofertas de vacante.
+> Las 14 preguntas se respondieron con el equipo (D-022 a D-034, más la aprobación de D-001 a D-008). Ya están incorporadas al [[Documento_Maestro_Requisitos_App_Maestria]] **v0.3.2** y a [[Modelo de datos]], [[Matriz de permisos]] y [[API y endpoints]]. Los detalles que surgieron al alinear la matriz también se resolvieron (D-035 a D-037).
 Ninguna se resolvió por suposición. Están ordenadas por el módulo que bloquean, en el orden previsto de implementación ([[Alcance y objetivos]], que también está «por validar»).
 
 ### Antes de la Fase 2 (fundamentos, gestión institucional y facultades, programas y períodos)

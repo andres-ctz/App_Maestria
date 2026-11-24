@@ -180,6 +180,8 @@ Tendrá acceso global a:
 - Configuración institucional.
     
 - Auditoría y reportes.
+
+El administrador podrá consultar, gestionar y modificar la información de todos los módulos en todo momento *(decisión D-037)*. Se mantienen las reglas de integridad del sistema: las calificaciones publicadas son definitivas (D-006), la auditoría no se modifica y las cuentas protegidas siguen las reglas de §2.9.
     
 
 ### Coordinador
@@ -695,8 +697,8 @@ Borrador → Programada → Abierta → Preparación → En curso → Cerrada.
 - Programada → Abierta: automático en la fecha de apertura de postulaciones.
 - Abierta → Preparación: automático en la fecha de cierre de postulaciones. Corresponde al cierre de la convocatoria descrito en §6.6.
 - Preparación → En curso y En curso → Cerrada: manuales, por el coordinador o el administrador.
-- **Suspensión:** solo total, desde Programada, Abierta, Preparación o En curso, con motivo obligatorio. Se conserva el estado anterior y, al reanudar, la convocatoria vuelve a él.
-- **Cancelación:** desde cualquier estado salvo Cerrada, con motivo obligatorio. Es definitiva.
+- **Suspensión:** solo total, desde Programada, Abierta, Preparación o En curso, con motivo obligatorio. Se conserva el estado anterior y, al reanudar, la convocatoria vuelve a él. Solo el administrador podrá suspender y reanudar *(decisión D-036)*.
+- **Cancelación:** desde cualquier estado salvo Cerrada, con motivo obligatorio. Es definitiva. Solo el administrador podrá cancelar *(decisión D-036)*.
 - Todos los cambios de estado quedarán registrados en auditoría.
 
 ### Visibilidad en el catálogo público *(decisión D-025)*
@@ -714,7 +716,7 @@ Borrador → Programada → Abierta → Preparación → En curso → Cerrada.
 
 ### Duplicación *(decisión D-027)*
 
-Una convocatoria podrá duplicarse. La copia nace en Borrador con su configuración (requisitos, documentos solicitados y estructura), sin fechas, postulaciones ni estudiantes.
+Una convocatoria podrá duplicarse. La copia nace en Borrador con su configuración (requisitos, documentos solicitados y estructura), sin fechas, postulaciones ni estudiantes. Solo el administrador podrá duplicar convocatorias *(decisión D-036)*.
 
 ## 5.3. Documentos de convocatoria
 
@@ -929,7 +931,7 @@ Se conserva el mecanismo de ofertas de vacantes con plazo de respuesta *(decisi�
 
 Detalle de la oferta *(decisión D-032)*:
 
-- **Estados:** Pendiente, Aceptada, Rechazada, Vencida y Anulada. El coordinador puede anular una oferta indicando el motivo.
+- **Estados:** Pendiente, Aceptada, Rechazada, Vencida y Anulada. El coordinador puede anular una oferta indicando el motivo. El administrador puede gestionar todas las ofertas *(decisión D-037)*.
 - **Datos:** postulación, convocatoria, quién la creó, fecha de envío, fecha límite de respuesta, estado, fecha de respuesta y motivo de anulación.
 - **Relación con los cupos:** el cupo se reserva al enviar la oferta. Mientras esté Pendiente, nadie más puede ocuparlo. Si se acepta, pasa a ser una asignación (§7.2); si se rechaza, vence o se anula, el cupo se libera.
 
@@ -1021,7 +1023,7 @@ Cada curso podrá incluir:
 
 Las fechas deberán estar dentro del período académico correspondiente.
 
-Los cursos podrán duplicarse: la copia conserva la estructura (módulos, asignaturas y configuración) sin fechas ni estudiantes. No existen plantillas de curso aparte *(decisión D-027)*.
+Los cursos podrán duplicarse: la copia conserva la estructura (módulos, asignaturas y configuración) sin fechas ni estudiantes. No existen plantillas de curso aparte *(decisión D-027)*. Solo el administrador podrá duplicar cursos *(decisión D-036)*.
 
 ## 9.2. Estructura académica
 
