@@ -1,8 +1,8 @@
 # Documento Maestro de Requisitos — App Maestría
 
-**Versión:** 0.3.1  
+**Versión:** 0.3.2  
 **Estado:** Versión consolidada para revisión y aprobación  
-**Última actualización:** 15/11/2026 (decisiones confirmadas por el equipo D-013 a D-019; la copia de la v0.3 original está en `historial/`)  
+**Última actualización:** 24/11/2026 (decisiones del equipo D-022 a D-034 y aprobación de D-001 a D-008; las copias de la v0.3 y la v0.3.1 están en `historial/`)  
 **Proyecto:** Sistema de gestión de cursos preparatorios para programas de maestría  
 **Documento:** Requisitos funcionales, reglas de negocio y restricciones del sistema
 
@@ -570,7 +570,11 @@ Reglas:
     
 - La duración podrá expresarse en meses o períodos.
     
-- Los programas podrán activarse o desactivarse.
+- Los programas tendrán únicamente dos estados: Activo e Inactivo. Solo el administrador podrá crearlos, activarlos y desactivarlos *(decisión D-024)*.
+    
+- Solo un programa activo podrá tener convocatorias en estado Programada, Abierta, Preparación o En curso. No se podrá desactivar un programa con convocatorias en esos estados: antes deberán cerrarse o cancelarse *(decisión D-029)*.
+    
+- Las modalidades son fijas (Presencial, Virtual e Híbrida); no forman un catálogo configurable *(decisión D-023)*.
     
 - No se eliminarán programas con información histórica.
     
@@ -640,6 +644,10 @@ Deberá permitir gestionar:
 - Período.
     
 - Fechas de inicio y finalización.
+
+- Fechas de apertura y cierre de postulaciones *(decisión D-026)*.
+    
+- Período adicional de revisión al cierre de postulaciones: 7 días por defecto *(decisión D-028, §6.6)*.
     
 - Cupos.
     
@@ -677,7 +685,36 @@ El sistema deberá aplicar reglas de visibilidad según el estado.
 
 Las convocatorias suspendidas y canceladas no aparecerán en el catálogo público.
 
-Las convocatorias cerradas, programadas y en curso podrán mostrarse según las reglas de publicación correspondientes.
+Las convocatorias cerradas, programadas y en curso podrán mostrarse según las reglas de publicación de la tabla «Visibilidad en el catálogo público» de esta sección.
+
+### Flujo de estados *(decisión D-026)*
+
+Borrador → Programada → Abierta → Preparación → En curso → Cerrada.
+
+- Borrador → Programada: manual, por el coordinador o el administrador.
+- Programada → Abierta: automático en la fecha de apertura de postulaciones.
+- Abierta → Preparación: automático en la fecha de cierre de postulaciones. Corresponde al cierre de la convocatoria descrito en §6.6.
+- Preparación → En curso y En curso → Cerrada: manuales, por el coordinador o el administrador.
+- **Suspensión:** solo total, desde Programada, Abierta, Preparación o En curso, con motivo obligatorio. Se conserva el estado anterior y, al reanudar, la convocatoria vuelve a él.
+- **Cancelación:** desde cualquier estado salvo Cerrada, con motivo obligatorio. Es definitiva.
+- Todos los cambios de estado quedarán registrados en auditoría.
+
+### Visibilidad en el catálogo público *(decisión D-025)*
+
+| Estado | En el catálogo público |
+|---|---|
+| Borrador | No se muestra |
+| Programada | Se muestra como «Próximamente», con su fecha de apertura |
+| Abierta | Se muestra y permite postular |
+| Preparación | Se muestra, solo informativa |
+| En curso | Se muestra, solo informativa |
+| Cerrada | Se muestra como «Cerrada» durante 30 días desde el cierre; después deja de mostrarse |
+| Suspendida | No se muestra |
+| Cancelada | No se muestra |
+
+### Duplicación *(decisión D-027)*
+
+Una convocatoria podrá duplicarse. La copia nace en Borrador con su configuración (requisitos, documentos solicitados y estructura), sin fechas, postulaciones ni estudiantes.
 
 ## 5.3. Documentos de convocatoria
 
@@ -750,6 +787,8 @@ La estructura de datos no deberá impedir que un postulante adjunte varios archi
 
 La estructura del formulario de postulación es fija. Los requisitos y los documentos solicitados son configurables por convocatoria. No se desarrollará un constructor de formularios dinámicos *(decisión D-017, confirmada por el equipo el 15/11/2026)*.
 
+Los documentos solicitados se eligen de un catálogo de tipos de documento que gestiona el administrador *(decisión D-023)*.
+
 ## 6.3. Estados de postulación
 
 La postulación contará con los siguientes estados, que permiten identificar su progreso. Son exactamente estos ocho estados *(decisión D-016, confirmada por el equipo el 15/11/2026)*:
@@ -790,6 +829,8 @@ Una vez enviada definitivamente:
 - Solo podrá modificar los campos y documentos habilitados para esa corrección.
     
 - Las correcciones conservarán su historial.
+
+Si después del envío el postulante no desea continuar, lo comunicará al coordinador, que resolverá la postulación mediante los estados existentes. No existe el estado «Retirada» *(decisiones D-030 y D-016)*.
     
 
 ## 6.5. Revisión
@@ -819,9 +860,9 @@ Cuando una convocatoria cierre:
 
 - Se notificará a los postulantes que tengan procesos pendientes.
     
-- Las revisiones podrán continuar durante un período adicional configurable.
+- Las revisiones podrán continuar durante un período adicional configurable: 7 días por defecto, modificable en cada convocatoria por el coordinador o el administrador *(decisión D-028)*.
     
-- Al finalizar ese período, las postulaciones pendientes serán rechazadas automáticamente.
+- Al finalizar ese período, las postulaciones pendientes serán rechazadas automáticamente: pasarán a «No admitida» con el motivo «Revisión no completada al cierre» *(decisión D-034)*.
     
 - El sistema registrará la operación y notificará a los afectados.
     
@@ -861,6 +902,8 @@ La operación deberá ejecutarse de forma transaccional.
 
 El sistema deberá validar la disponibilidad antes de confirmar la asignación.
 
+Los cupos ocupados y disponibles se calcularán a partir de las asignaciones y de las ofertas pendientes; no se almacenarán. Cupos disponibles = cupos de la convocatoria − asignados − ofertas pendientes *(decisiones D-031 y D-032)*.
+
 ## 7.3. Lista de espera
 
 La lista de espera respetará el orden de llegada.
@@ -884,7 +927,11 @@ Se conserva el mecanismo de ofertas de vacantes con plazo de respuesta *(decisi�
 - Debe conservarse el orden de la lista de espera (§7.3).
     
 
-Los campos y estados de la oferta, y su relación con la asignación de cupos (§7.2), se definirán en el modelo de datos. Antecedente: Documento Maestro v0.2, §6.2.
+Detalle de la oferta *(decisión D-032)*:
+
+- **Estados:** Pendiente, Aceptada, Rechazada, Vencida y Anulada. El coordinador puede anular una oferta indicando el motivo.
+- **Datos:** postulación, convocatoria, quién la creó, fecha de envío, fecha límite de respuesta, estado, fecha de respuesta y motivo de anulación.
+- **Relación con los cupos:** el cupo se reserva al enviar la oferta. Mientras esté Pendiente, nadie más puede ocuparlo. Si se acepta, pasa a ser una asignación (§7.2); si se rechaza, vence o se anula, el cupo se libera.
 
 ---
 
@@ -909,6 +956,8 @@ Deberá conservar:
 - Responsable.
     
 - Información histórica.
+
+Al registrar la matrícula se generará un comprobante en PDF con un código único y verificable *(decisión D-033)*.
     
 
 ## 8.2. Reglas
@@ -922,6 +971,8 @@ Deberá conservar:
 - Las matrículas mantendrán su historial.
     
 - Los cambios de estado deberán quedar registrados.
+
+- La matrícula podrá pasar a «Retirada», con motivo y fecha. No existe la reincorporación: quien vuelva deberá matricularse de nuevo en otra convocatoria *(decisión D-033)*.
     
 
 ## 8.3. Acceso del estudiante
@@ -969,6 +1020,8 @@ Cada curso podrá incluir:
     
 
 Las fechas deberán estar dentro del período académico correspondiente.
+
+Los cursos podrán duplicarse: la copia conserva la estructura (módulos, asignaturas y configuración) sin fechas ni estudiantes. No existen plantillas de curso aparte *(decisión D-027)*.
 
 ## 9.2. Estructura académica
 
@@ -2196,6 +2249,8 @@ La arquitectura definitiva se documentará después de inspeccionar el repositor
 
 La solución deberá permitir separar responsabilidades de interfaz, lógica de negocio, persistencia y almacenamiento de archivos.
 
+Stack confirmado por el equipo *(decisión D-022)*: Next.js con React y TypeScript (frontend, pruebas con Vitest), NestJS (backend, pruebas con Jest), PostgreSQL con Prisma, Docker Compose para el entorno local, Mailpit para los correos simulados, PDFKit y ExcelJS para PDF y Excel, y Playwright para las pruebas de extremo a extremo.
+
 ## 21.3. Modelo de datos
 
 El modelo de datos deberá respetar las relaciones y restricciones descritas en este documento y en la documentación complementaria del modelo de datos.
@@ -2312,8 +2367,6 @@ Los siguientes puntos no deben resolverse mediante suposiciones del equipo de de
 |Rendimiento|Definir objetivos cuantitativos de respuesta y capacidad.|
 |Despliegue|Definir infraestructura y proveedor después de validar el sistema local.|
 |Integraciones externas|Determinar si se requieren conexiones con plataformas institucionales existentes.|
-|Comprobante de matrícula y retiros|No hay decisión definitiva sobre su inclusión; no se consideran funcionalidad aprobada.|
-|Ofertas de vacantes|Definir los campos y estados de la oferta y su relación con la asignación de cupos (§7.4).|
 
 Mientras no exista una decisión formal, el sistema deberá evitar asumir valores definitivos para estos puntos.
 
@@ -2350,9 +2403,12 @@ Estos documentos deberán mantenerse coherentes con esta versión del Documento 
 |0.2|Ampliación de requisitos funcionales y módulos del sistema.|
 |0.3|Consolidación de decisiones funcionales, reglas de negocio, permisos, restricciones y coherencia con el modelo de datos.|
 |0.3.1|Incorporación de las decisiones confirmadas por el equipo el 15/11/2026 (D-013 a D-019): correo simulado en desarrollo local, escala de 0 a 100, nota mínima de 70 puntos, ocho estados de postulación, formularios de estructura fija, nivelación fuera de alcance y ofertas de vacantes.|
+|0.3.2|Incorporación de las decisiones del equipo del 24/11/2026 (D-022 a D-034): stack confirmado, catálogo de tipos de documento y modalidades fijas, estados del programa, flujo y visibilidad de las convocatorias, duplicación, período adicional de revisión y rechazo automático, retiro de la postulación, cálculo de cupos, ofertas de vacante, y comprobante y retiro de matrícula. Aprobación de D-001 a D-008.|
 
 **Estado de la versión 0.3:** documento consolidado para revisión y aprobación antes de iniciar la implementación.
 
 **Estado de la versión 0.3.1:** es la v0.3 con las decisiones confirmadas del 15/11/2026. No cambia el estado de aprobación de las decisiones D-001 a D-012 del Registro de decisiones.
+
+**Estado de la versión 0.3.2:** es la v0.3.1 con las decisiones del equipo del 24/11/2026 (D-022 a D-034). Ese día el equipo también aprobó las decisiones D-001 a D-008.
 
 **Regla de control:** cualquier cambio funcional posterior deberá documentarse, justificarse y reflejarse en los documentos complementarios que correspondan. Las herramientas de asistencia de programación no podrán modificar decisiones funcionales por cuenta propia.

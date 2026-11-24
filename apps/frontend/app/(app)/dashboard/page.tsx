@@ -23,8 +23,9 @@ export default function DashboardPage() {
   const avanceGeneral = Math.round(estudiantes.reduce((s, e) => s + e.avance, 0) / estudiantes.length)
   const enProceso = postulaciones.filter((p) => ESTADOS_EN_PROCESO.includes(p.estado)).length
 
+  // Solo programas activos con estudiantes matriculados: un programa sin estudiantes no tiene riesgo que mostrar.
   const riskData = programas
-    .filter((p) => p.estado === "activo")
+    .filter((p) => p.estado === "activo" && estudiantes.some((x) => x.programaId === p.id))
     .map((p) => {
       const list = estudiantes.filter((x) => x.programaId === p.id)
       return {

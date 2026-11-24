@@ -41,7 +41,7 @@ export const programas: Programa[] = [
   { id: "pr-1", nombre: "Maestría en Gestión Pública", facultad: "Ciencias Sociales", modalidad: "Híbrida", estado: "activo" },
   { id: "pr-2", nombre: "Maestría en Educación Superior", facultad: "Educación", modalidad: "Virtual", estado: "activo" },
   { id: "pr-3", nombre: "Maestría en Ingeniería de Software", facultad: "Ingeniería", modalidad: "Presencial", estado: "activo" },
-  { id: "pr-4", nombre: "Maestría en Salud Pública", facultad: "Ciencias de la Salud", modalidad: "Híbrida", estado: "borrador" },
+  { id: "pr-4", nombre: "Maestría en Salud Pública", facultad: "Ciencias de la Salud", modalidad: "Híbrida", estado: "activo" },
 ]
 
 export const convocatorias: Convocatoria[] = [
