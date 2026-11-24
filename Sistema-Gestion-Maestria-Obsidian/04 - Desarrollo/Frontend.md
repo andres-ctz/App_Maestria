@@ -67,7 +67,11 @@ Solo ocurre en el servidor de desarrollo y tiene dos causas conocidas:
 2. **El indicador de desarrollo de Next** (la «N» flotante) se colocaba abajo a la izquierda y tapaba «Menú de la cuenta», así que el primer clic no lo abría, ni «Cambiar de cuenta» ni «Cerrar sesión». Ahora está abajo a la derecha. Solo existe en `pnpm dev`.
 
 ### Si `pnpm dev` o `pnpm build` se detienen con un aviso de seguridad
-Next 16.4.3 consulta los avisos de seguridad de npm y, de vez en cuando, detiene el comando (código de salida 1) para recomendar actualizar. No es un error del proyecto: al repetir el comando continúa. La actualización de Next (los avisos se corrigen en 16.4.5) está pendiente de decisión del equipo; ver [[Informe Pulidos Fase 1]].
+Next consulta los avisos de seguridad de npm y, si la versión instalada está afectada, detiene el comando (código de salida 1) para recomendar actualizar. Pasaba con 16.4.3. Desde el 24/11/2026 el proyecto usa **Next 16.4.5**, que no tiene avisos propios, y el aviso no ha vuelto a aparecer.
+- Si vuelve a aparecer con una versión futura, repetir el comando permite continuar, pero lo correcto es actualizar Next.
+- Si tienes un `pnpm dev` abierto desde antes de la actualización, **reinícialo**: sigue sirviendo la versión anterior y da errores 404.
+
+Ver [[Informe para el equipo - Cierre Fase 1 y siguientes pasos]].
 
 ### Cuentas de demostración
 Los correos usan el dominio reservado `.example`. Todas las cuentas están sin contraseña.
