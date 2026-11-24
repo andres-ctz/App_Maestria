@@ -12,7 +12,7 @@ export function RiskRulesCard() {
         <CardTitle>Reglas de riesgo (ejemplo)</CardTitle>
         <CardDescription>Estudiantes afectados por cada regla de demostración</CardDescription>
         <CardAction>
-          <ToneBadge tone="warning" className="whitespace-normal text-center">
+          <ToneBadge tone="warning" className="h-auto whitespace-normal text-center">
             {AVISO_EJEMPLO}
           </ToneBadge>
         </CardAction>

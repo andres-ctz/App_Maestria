@@ -10,9 +10,9 @@ export default async function PublicLayout({ children }: { children: React.React
 
   return (
     <div className="flex min-h-svh flex-col">
-      <header className="flex items-center justify-between gap-4 border-b px-4 py-3 md:px-8">
+      <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b px-4 py-3 md:px-8">
         <Brand />
-        <nav className="flex items-center gap-2" aria-label="Acceso">
+        <nav className="ml-auto flex items-center gap-2" aria-label="Acceso">
           <ThemeToggle />
           {sesion ? (
             <Button render={<Link href={rutaInicial(sesion.rolActivo, sesion.cuenta)} />}>Ir a mi cuenta</Button>
