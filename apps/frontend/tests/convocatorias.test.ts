@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest"
 import { convocatorias, programas } from "@/lib/mock-data"
-import { ESTADOS_CONVOCATORIA } from "@/lib/types"
+import { ESTADOS_CONVOCATORIA, ESTADOS_PROGRAMA } from "@/lib/types"
+
+describe("programas", () => {
+  it("los programas solo están activos o inactivos (D-024)", () => {
+    expect([...ESTADOS_PROGRAMA]).toEqual(["activo", "inactivo"])
+    for (const p of programas) expect(ESTADOS_PROGRAMA, p.id).toContain(p.estado)
+  })
+})
 
 describe("convocatorias", () => {
   it("los estados de la convocatoria son exactamente los ocho del v0.3 §5.2", () => {
@@ -19,6 +26,13 @@ describe("convocatorias", () => {
   it("todas las convocatorias de los datos de ejemplo usan un estado válido", () => {
     for (const c of convocatorias) {
       expect(ESTADOS_CONVOCATORIA, c.id).toContain(c.estado)
+    }
+  })
+
+  it("las convocatorias en marcha pertenecen a un programa activo (D-029)", () => {
+    const enMarcha = ["programada", "abierta", "preparacion", "en-curso"]
+    for (const c of convocatorias.filter((c) => enMarcha.includes(c.estado))) {
+      expect(programas.find((p) => p.id === c.programaId)?.estado, c.id).toBe("activo")
     }
   })
 

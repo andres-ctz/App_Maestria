@@ -74,24 +74,24 @@ Lo que sigue en esta sección es el planteamiento original, antes de decidir.
 Ninguna se resolvió por suposición. Están ordenadas por el módulo que bloquean, en el orden previsto de implementación ([[Alcance y objetivos]], que también está «por validar»).
 
 ### Antes de la Fase 2 (fundamentos, gestión institucional y facultades, programas y períodos)
-1. **Stack del backend.** ¿Se confirma NestJS + PostgreSQL + Prisma + Docker Compose + Mailpit? Hoy es una propuesta ([[Stack tecnologico]]).
-2. **Seguridad de cuentas (D-005).** Argon2id, mínimo de 8 caracteres y sesión de 30 minutos están en el v0.3 pero **sin aprobar**. [[Seguridad y permisos]] los presenta como hechos.
-3. **Decisiones D-001 a D-008.** Siguen «pendientes de aprobación». ¿Quién las aprueba y cuándo?
-4. **Catálogos configurables (v0.2 §14.3).** ¿Se mantienen los catálogos de tipos de documento, modalidades, etc.? (Módulos 2 y 3)
-5. **Programas.** ¿Quién los crea y quién los activa o desactiva? ¿Qué estados tienen? El v0.3 §4.2 solo dice «Estado» y que «podrán activarse o desactivarse»; el código de demostración usa `activo`, `borrador` y `cerrado`. (Módulo 3)
+1. ~~**Stack del backend.**~~ **Resuelta (D-022):** se confirma NestJS + PostgreSQL + Prisma + Docker Compose + Mailpit ([[Stack tecnologico]]).
+2. ~~**Seguridad de cuentas (D-005).**~~ **Resuelta (24/11/2026):** se aprueban Argon2id, mínimo de 8 caracteres y sesión de 30 minutos de inactividad.
+3. ~~**Decisiones D-001 a D-008.**~~ **Resuelta (24/11/2026):** el equipo las aprueba todas tal como están en el v0.3.
+4. ~~**Catálogos configurables.**~~ **Resuelta (D-023):** modalidades fijas, tipos de documento en un catálogo editable y facultades editables.
+5. ~~**Programas.**~~ **Resuelta (D-024):** solo el administrador los crea, activa y desactiva; estados Activo e Inactivo. El código ya está ajustado.
 
 ### Antes de Convocatorias (Módulo 4)
-6. **Publicación.** El v0.3 §5.2 dice que las suspendidas y canceladas no se muestran en el catálogo, pero no define las «reglas de publicación» de las cerradas, programadas y en curso.
-7. **Transiciones entre los 8 estados.** ¿Qué paso lleva a cuál y quién lo hace? En particular, suspensión total o parcial con motivo y estado anterior (v0.2 §4.2).
-8. **Plantillas y duplicación.** ¿Se pueden duplicar convocatorias (v0.2)? El v0.3 no lo menciona.
-9. **Período adicional de revisión al cierre (§6.6).** Es configurable, pero ¿cuánto vale por defecto?
-10. **Programa en borrador.** ¿Puede tener una convocatoria abierta? Los datos de ejemplo lo permiten (`cv-4`).
+6. ~~**Publicación.**~~ **Resuelta (D-025):** borrador oculta; programada como «Próximamente»; abierta permite postular; preparación y en curso solo informativas; cerrada visible 30 días; suspendida y cancelada ocultas.
+7. ~~**Transiciones entre los 8 estados.**~~ **Resuelta (D-026):** flujo Borrador → Programada → Abierta → Preparación → En curso → Cerrada (apertura y cierre de postulaciones automáticos por fecha); suspensión total con motivo y reanudación; cancelación definitiva con motivo.
+8. ~~**Plantillas y duplicación.**~~ **Resuelta (D-027):** se duplican convocatorias y cursos (la copia nace en Borrador, sin fechas ni personas); no hay plantillas de curso aparte.
+9. ~~**Período adicional de revisión al cierre (§6.6).**~~ **Resuelta (D-028):** 7 días por defecto; lo pueden cambiar el coordinador y el administrador en cada convocatoria. Queda por confirmar el estado del rechazo automático (ver [[Decisiones pendientes]]).
+10. ~~**Programa inactivo.**~~ **Resuelta (D-029):** solo un programa activo puede tener convocatorias en marcha, y no se desactiva un programa con convocatorias en marcha. Datos de ejemplo corregidos.
 
 ### Antes de Postulaciones, admisiones y matrículas (Módulos 5 a 7)
-11. **Retiro de la postulación.** ¿Existe? ¿Cómo se registra, si no hay estado «Retirada» (D-016)?
-12. **Cupos.** ¿Los ocupados y disponibles se guardan o se calculan a partir de las asignaciones (§7.2)?
-13. **Ofertas de vacante (D-019).** ¿Qué campos y estados tienen? ¿Aceptar ocupa el cupo o solo lo hace la matrícula?
-14. **Comprobante y retiros de matrícula.** Sin decisión (§23).
+11. ~~**Retiro de la postulación.**~~ **Resuelta (D-030):** el borrador se descarta; una postulación enviada no se retira, y los casos excepcionales los resuelve el coordinador.
+12. ~~**Cupos.**~~ **Resuelta (D-031):** se calculan a partir de las asignaciones, sin guardarlos; el backend impide la doble asignación.
+13. ~~**Ofertas de vacante.**~~ **Resuelta (D-032):** estados Pendiente, Aceptada, Rechazada, Vencida y Anulada; el cupo se reserva al ofrecer y se libera si la oferta no se acepta.
+14. ~~**Comprobante y retiros de matrícula.**~~ **Resuelta (D-033):** comprobante PDF con código único; retiro simple con motivo y fecha, sin reincorporación.
 
 ### Contradicciones detectadas en el vault
 - **Recordatorios:** el backlog (AM-13) dice «15, 10, 5, 3 y 1 día antes», pero no hay una anticipación aprobada ([[Decisiones pendientes]]).

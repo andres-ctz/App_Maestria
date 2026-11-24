@@ -46,6 +46,14 @@ export const ESTADOS_CONVOCATORIA = [
 
 export type EstadoConvocatoria = (typeof ESTADOS_CONVOCATORIA)[number]
 
+/**
+ * Estados del programa: solo activo e inactivo (v0.3 §4.2, decisión D-024). Solo el
+ * administrador crea, activa y desactiva programas; no se eliminan si tienen historial.
+ */
+export const ESTADOS_PROGRAMA = ["activo", "inactivo"] as const
+
+export type EstadoPrograma = (typeof ESTADOS_PROGRAMA)[number]
+
 /** Resultado de revisar un documento de postulación o una entrega de actividad. */
 export type EstadoRevision = "pendiente" | "en-correccion" | "aprobado" | "rechazado"
 
@@ -89,7 +97,7 @@ export interface Programa {
   nombre: string
   facultad: string
   modalidad: "Presencial" | "Virtual" | "Híbrida"
-  estado: "activo" | "borrador" | "cerrado"
+  estado: EstadoPrograma
 }
 
 export interface Convocatoria {
@@ -100,6 +108,10 @@ export interface Convocatoria {
   fin: string
   /** Cupos de la convocatoria (v0.3 §5.1). Los cupos no pertenecen al programa. */
   cupos: number
+  /**
+   * Solo para la demostración. Con el backend, los cupos ocupados y disponibles se calculan
+   * a partir de las asignaciones (D-031); no se guardan.
+   */
   inscritos: number
   estado: EstadoConvocatoria
 }

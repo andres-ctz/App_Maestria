@@ -1,7 +1,7 @@
 # Stack tecnológico
 
-> [!warning] Propuesta, no decisión
-> Estas herramientas vienen del plan original. El v0.3 (§21.1) pide inspeccionar el repositorio antes de modificarlo y no asumir que una tecnología propuesta ya está aprobada. El boceto de frontend del repo usa Next.js con shadcn/ui; el resto del stack aún no existe en el repositorio.
+> [!success] Confirmado por el equipo (D-022, 24/11/2026)
+> El equipo confirmó este stack tal como está. El frontend ya existe en `apps/frontend` (Next.js 16 con shadcn/ui, pruebas con Vitest). El backend y la base de datos aún no existen en el repositorio: se crean en la Fase 2. El backend usará Jest, el valor por defecto de NestJS.
 
 | Capa | Herramienta propuesta |
 |---|---|
