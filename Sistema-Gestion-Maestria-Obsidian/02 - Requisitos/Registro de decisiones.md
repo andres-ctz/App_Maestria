@@ -26,6 +26,8 @@ Las decisiones D-001 a D-008 ya figuran en el [[Documento_Maestro_Requisitos_App
 | D-017 | 15/11/2026 | Formularios de postulación de estructura fija; requisitos y documentos solicitados configurables por convocatoria; sin constructor de formularios dinámicos | Nota «Correcciones posteriores a la Fase 1» | Equipo | Confirmada por el equipo |
 | D-018 | 15/11/2026 | El proceso académico de nivelación queda fuera del alcance de la primera versión; podrá evaluarse en una versión futura | Nota «Correcciones posteriores a la Fase 1» | Equipo | Confirmada por el equipo |
 | D-019 | 15/11/2026 | Ofertas de vacantes: se conserva el mecanismo con plazo de respuesta. El coordinador gestiona la oferta y fija el plazo; el postulante puede aceptar o rechazar; si no responde antes del vencimiento la oferta vence y el coordinador puede continuar con la siguiente persona de la lista de espera, conservando el orden de la lista | Nota «Correcciones posteriores a la Fase 1» | Equipo | Confirmada por el equipo |
+| D-020 | 24/11/2026 | Se retiran del repositorio `Sistema-Gestion-Maestria-Obsidian.zip` y el boceto del frontend (`Boceto de fronted/` y su zip). Quedan en el historial de git | Indicada por el equipo | Equipo | Definida |
+| D-021 | 24/11/2026 | La rama `Revisiones_Reparaciones` se usa para los arreglos de fin de semana sobre la rama de cimientos. El responsable los revisa y los pasa a `feature/fase-1-cimientos` | Indicada por el equipo | Equipo | Definida |
 
 **Sin decisión:** los comprobantes de matrícula y los retiros no tienen una decisión definitiva y no se consideran funcionalidad aprobada.
 

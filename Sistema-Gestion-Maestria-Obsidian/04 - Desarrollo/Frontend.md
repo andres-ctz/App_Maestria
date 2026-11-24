@@ -2,7 +2,7 @@
 
 Responsabilidad: pantallas y flujos en Next.js 16, React 19, TypeScript y Tailwind 4 con shadcn/ui.
 
-Está en `apps/frontend`. Nació del boceto de v0 (`Boceto de fronted/sistema-de-gestion-academica`) y conserva su identidad visual. Detalle de la Fase 1 en [[Informe Fase 1]].
+Está en `apps/frontend`. Nació del boceto de v0 y conserva su identidad visual. La carpeta del boceto (`Boceto de fronted/`) y su zip se retiraron del repositorio el 24/11/2026 por decisión del equipo; siguen en el historial de git (por ejemplo, en el commit `813d12f`). Detalle de la Fase 1 en [[Informe Fase 1]].
 
 ## Comandos
 Se ejecutan desde `apps/frontend` con pnpm:

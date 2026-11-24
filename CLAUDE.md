@@ -11,6 +11,11 @@ Antes de cambiar algo, comprueba en el código si ya está hecho; no lo supongas
 
 ## Reglas
 - **Git:** los commits locales están permitidos. Push, merge a `main` y PR solo con confirmación expresa. `main` tiene commits de otro colaborador: no la pises ni la rebasees sin avisar.
+- **Ramas:**
+  - `feature/fase-1-cimientos` es la rama de trabajo;
+  - `Revisiones_Reparaciones` es la rama de arreglos de fin de semana: se trabaja ahí, el responsable revisa y pasa los cambios a `feature/fase-1-cimientos`;
+  - `main` recibe la rama de trabajo cuando el equipo lo aprueba.
+- **No versionar `apps/frontend/next-env.d.ts`:** Next lo reescribe en cada `pnpm dev` o `pnpm build`; no lo incluyas en los commits.
 - **Decisiones pendientes** (Documento Maestro §23 y la nota «Decisiones pendientes»): no se resuelven ni se inventan. Si algo depende de una, anótalo y pregunta.
 - **Identidad visual del boceto v0:** shadcn/ui con `@base-ui/react`, Tailwind 4, temas claro y oscuro. No cambies `app/globals.css` ni los colores sin pedirlo.
 - **Seguridad:**

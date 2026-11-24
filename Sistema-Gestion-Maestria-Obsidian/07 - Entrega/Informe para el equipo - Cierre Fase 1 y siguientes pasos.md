@@ -52,7 +52,18 @@ Sobre los avisos de seguridad (`pnpm audit --prod`):
 **Sin verificar:** Safari, Firefox, Windows, teléfonos reales y lectores de pantalla.
 - **Pedido al equipo:** quien tenga esos equipos, abra la aplicación y anote en [[Registro de errores]] lo que vea mal.
 
-## 3. Pendientes de limpieza (decisión del equipo)
+## 3. Limpieza: decidido el 24/11/2026
+| Tema | Decisión | Estado |
+|---|---|---|
+| `Sistema-Gestion-Maestria-Obsidian.zip` | Se borra | Hecho |
+| Boceto del frontend (`Boceto de fronted/` y su zip) | Se borra | Hecho; sigue en el historial de git |
+| `apps/frontend/next-env.d.ts` | Se ignora: no se incluye en los commits | Anotado en `CLAUDE.md` |
+| Rama `Revisiones_Reparaciones` | Se usa para los arreglos de fin de semana sobre la rama de cimientos. El responsable revisa y pasa los cambios a `feature/fase-1-cimientos` | Anotado en `CLAUDE.md` |
+| Merge de `feature/fase-1-cimientos` a `main` | Aprobado | Merge hecho en local el 24/11/2026, sin conflictos; falta subirlo a GitHub |
+
+Lo que sigue en esta sección es el planteamiento original, antes de decidir.
+
+### Planteamiento original
 - **`Sistema-Gestion-Maestria-Obsidian.zip`** está en la raíz de `origin/main` y también en `feature/fase-1-cimientos`, así que el merge no lo retira. Duplica el vault y ya está desactualizado. ¿Lo retiramos?
 - **`Boceto de fronted/sistema-de-gestion-academica.zip`** aparece borrado en una copia de trabajo, sin confirmar. ¿Se retira oficialmente la carpeta del boceto? (No hay tarea en el backlog para eso; AM-01 pide el README y el `.env.example`.)
 - **`apps/frontend/next-env.d.ts`** lo reescribe Next en cada `pnpm dev` o `pnpm build`, así que aparece modificado a menudo. Se puede ignorar al hacer commit.
