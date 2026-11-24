@@ -100,25 +100,24 @@ Ninguna se resolvió por suposición. Están ordenadas por el módulo que bloque
 - **Recordatorios:** el backlog (AM-13) dice «15, 10, 5, 3 y 1 día antes», pero no hay una anticipación aprobada ([[Decisiones pendientes]]).
 - **Nombres de módulos:** [[Backend]] usa una lista de módulos en inglés que no coincide con los 18 del v0.3.
 - **Backlog incompleto:** no tiene tareas para Gestión institucional (módulo 2), Facultades y Períodos (módulo 3) ni Configuración institucional (módulo 18).
-- **Equipo:** [[Equipo y responsabilidades]] tiene los roles P1–P5, pero sin nombres.
 - **[[Cronograma]]:** está marcado «por revalidar».
 
 La lista completa de pendientes sigue en [[Decisiones pendientes]]. Cuando se responda una pregunta, se anota en [[Registro de decisiones]] y se retira de allí.
 
 ## 5. Siguientes pasos propuestos
-| Orden | Qué | Quién (rol propuesto) | Depende de |
-|---|---|---|---|
-| 1 | Asignar nombres a P1–P5 en [[Equipo y responsabilidades]] y revalidar el [[Cronograma]] | Todo el equipo | — |
-| 2 | Responder las preguntas 1 a 5 y aprobar D-001 a D-008 | Equipo con el cliente | — |
-| 3 | Aprobar el merge de `feature/fase-1-cimientos` a `main` y decidir las limpiezas de la sección 3 | P1 | — |
-| 4 | Completar el backlog con los módulos 2, 3 y 18 y alinear los nombres de [[Backend]] con el v0.3 | P1 | 2 |
-| 5 | **Fase 2 — Base del backend:** autenticación real (sustituye el proveedor de demostración tras `AuthService`), usuarios y roles, permisos validados en el servidor y auditoría inicial | P4 y P1 | 1 y 2 |
-| 6 | Gestión institucional y Facultades, programas y períodos (módulos 2 y 3; backend y pantallas) | P4 y P3 | 5 y preguntas 4–5 |
-| 7 | En el frontend, sustituir `lib/mock-data.ts` por una capa de acceso a la API (D-012: los nombres en español se traducen ahí) | P3 | contratos de API de P4 |
-| 8 | Convocatorias y Postulaciones | P3 y P4 | preguntas 6–13 |
-| 9 | Revisión en Safari, Firefox, Windows y teléfonos reales | P5 | — |
+El reparto de tareas entre personas lo organiza el equipo fuera de este documento.
 
-Los roles son los de [[Equipo y responsabilidades]]. Las personas concretas aún están «por definir».
+| Orden | Qué | Estado / depende de |
+|---|---|---|
+| 1 | Responder las preguntas de la sección 4 y aprobar D-001 a D-008 | **Hecho** (24/11/2026) |
+| 2 | Merge de `feature/fase-1-cimientos` a `main` y limpiezas de la sección 3 | **Hecho** (24/11/2026) |
+| 3 | Revalidar el [[Cronograma]] | Pendiente |
+| 4 | Completar el backlog con los módulos 2, 3 y 18 y alinear los nombres de [[Backend]] con el v0.3 | Pendiente |
+| 5 | **Fase 2 — Base del backend:** autenticación real (sustituye el proveedor de demostración tras `AuthService`), usuarios y roles, permisos validados en el servidor y auditoría inicial | Stack confirmado (D-022); conviene tener el paso 4 |
+| 6 | Gestión institucional y Facultades, programas y períodos (módulos 2 y 3; backend y pantallas) | Paso 5; decisiones D-023 y D-024 |
+| 7 | En el frontend, sustituir `lib/mock-data.ts` por una capa de acceso a la API (D-012: los nombres en español se traducen ahí) | Contratos de la API del paso 5 |
+| 8 | Convocatorias y Postulaciones | Pasos 5 y 6; decisiones D-025 a D-034 |
+| 9 | Revisión en Safari, Firefox, Windows y teléfonos reales | Se puede hacer ya |
 
 **Reglas de trabajo** (resumen de `CLAUDE.md`):
 - No se resuelve ninguna decisión pendiente por suposición.

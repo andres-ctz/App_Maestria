@@ -11,7 +11,6 @@
 - [[Planificacion general]]
 - [[Alcance y objetivos]]
 - [[Cronograma]]
-- [[Equipo y responsabilidades]]
 - [[Backlog de tareas]]
 ### Requisitos
 - [[Documento_Maestro_Requisitos_App_Maestria]] — fuente funcional principal (v0.3)
