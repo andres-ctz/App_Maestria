@@ -2405,12 +2405,12 @@ Estos documentos deberán mantenerse coherentes con esta versión del Documento 
 |0.2|Ampliación de requisitos funcionales y módulos del sistema.|
 |0.3|Consolidación de decisiones funcionales, reglas de negocio, permisos, restricciones y coherencia con el modelo de datos.|
 |0.3.1|Incorporación de las decisiones confirmadas por el equipo el 15/11/2026 (D-013 a D-019): correo simulado en desarrollo local, escala de 0 a 100, nota mínima de 70 puntos, ocho estados de postulación, formularios de estructura fija, nivelación fuera de alcance y ofertas de vacantes.|
-|0.3.2|Incorporación de las decisiones del equipo del 24/11/2026 (D-022 a D-034): stack confirmado, catálogo de tipos de documento y modalidades fijas, estados del programa, flujo y visibilidad de las convocatorias, duplicación, período adicional de revisión y rechazo automático, retiro de la postulación, cálculo de cupos, ofertas de vacante, y comprobante y retiro de matrícula. Aprobación de D-001 a D-008.|
+|0.3.2|Incorporación de las decisiones del equipo del 24/11/2026 (D-022 a D-037): stack confirmado, catálogo de tipos de documento y modalidades fijas, estados del programa, flujo y visibilidad de las convocatorias, duplicación, período adicional de revisión y rechazo automático, retiro de la postulación, cálculo de cupos, ofertas de vacante, comprobante y retiro de matrícula, y permisos del administrador. Aprobación de D-001 a D-008.|
 
 **Estado de la versión 0.3:** documento consolidado para revisión y aprobación antes de iniciar la implementación.
 
 **Estado de la versión 0.3.1:** es la v0.3 con las decisiones confirmadas del 15/11/2026. No cambia el estado de aprobación de las decisiones D-001 a D-012 del Registro de decisiones.
 
-**Estado de la versión 0.3.2:** es la v0.3.1 con las decisiones del equipo del 24/11/2026 (D-022 a D-034). Ese día el equipo también aprobó las decisiones D-001 a D-008.
+**Estado de la versión 0.3.2:** es la v0.3.1 con las decisiones del equipo del 24/11/2026 (D-022 a D-037). Ese día el equipo también aprobó las decisiones D-001 a D-008.
 
 **Regla de control:** cualquier cambio funcional posterior deberá documentarse, justificarse y reflejarse en los documentos complementarios que correspondan. Las herramientas de asistencia de programación no podrán modificar decisiones funcionales por cuenta propia.
