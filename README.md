@@ -11,7 +11,8 @@ Sistema de gestión de cursos preparatorios para programas de maestría. Cubre e
 | Parte | Estado |
 |---|---|
 | Frontend (`apps/frontend`) | **Fase 1 cerrada.** Pantallas base con datos e inicio de sesión de **demostración** |
-| Backend y base de datos | Aún no existen. Son la **Fase 2**, con el stack ya confirmado (D-022): NestJS, PostgreSQL, Prisma, Docker Compose y Mailpit |
+| Entorno local (`docker-compose.yml`) | **Base lista.** PostgreSQL 16 y Mailpit configurados para desarrollo local (D-008, D-009, D-013, D-022) |
+| Backend y base de datos | En preparación (**Fase 2**). NestJS y Prisma aún no se crean; el stack está confirmado (D-022) |
 | Requisitos | Documento Maestro **v0.3.2**, con las decisiones del equipo hasta D-037 |
 
 Los siguientes pasos están en [`Informe para el equipo`](Sistema-Gestion-Maestria-Obsidian/07%20-%20Entrega/Informe%20para%20el%20equipo%20-%20Cierre%20Fase%201%20y%20siguientes%20pasos.md).
@@ -42,10 +43,33 @@ Las cuentas de demostración y sus roles están en [`Frontend.md`](Sistema-Gesti
 > [!WARNING]
 > El inicio de sesión de demostración **no valida contraseñas** y nunca debe desplegarse. Sin `AUTH_DEMO=true`, una compilación de producción no permite iniciar sesión.
 
+### Servicios locales (PostgreSQL y Mailpit)
+**Requisito adicional:** Docker Desktop (o Docker Engine con el plugin `docker compose`).
+
+Desde la **raíz del repositorio**:
+
+```bash
+cp .env.example .env      # opcional: si quieres personalizar puertos o credenciales locales
+docker compose up -d      # levanta PostgreSQL 16 y Mailpit en segundo plano
+docker compose ps         # comprueba que ambos servicios estén en estado healthy
+```
+
+| Servicio | Dirección local | Uso |
+|---|---|---|
+| PostgreSQL 16 | `127.0.0.1:5432` | Base de datos local para la Fase 2 (NestJS + Prisma) |
+| Mailpit (SMTP) | `127.0.0.1:1025` | Captura de correos simulados en desarrollo (D-013) |
+| Mailpit (Web UI) | http://localhost:8025 | Bandeja visual para inspeccionar los correos enviados |
+
+Para detener los servicios:
+- `docker compose down` detiene los contenedores conservando los datos de PostgreSQL.
+- `docker compose down -v` detiene los contenedores y borra el volumen local para empezar desde una base vacía.
+
 ## Estructura
 ```
 .
 ├── apps/frontend/                     # Next.js 16, React 19, TypeScript, Tailwind 4 y shadcn/ui
+├── docker-compose.yml                 # PostgreSQL 16 y Mailpit para desarrollo local
+├── .env.example                       # plantilla de variables locales (no subir .env)
 ├── Sistema-Gestion-Maestria-Obsidian/ # documentación del proyecto (vault de Obsidian)
 │   ├── 02 - Requisitos/               # Documento Maestro, Registro de decisiones, Decisiones pendientes
 │   ├── 03 - Arquitectura/             # stack, modelo de datos, matriz de permisos, API

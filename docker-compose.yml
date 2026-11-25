@@ -1,0 +1,53 @@
+# Entorno local de servicios base para App Maestría (Fase 2).
+# Stack confirmado por el equipo (D-022): PostgreSQL + Mailpit.
+# Zona horaria institucional (D-009): America/Guayaquil.
+#
+# Uso desde la raíz del repositorio:
+#   1. Copia .env.example a .env (opcional; existen valores por defecto de desarrollo).
+#   2. Ejecuta: docker compose up -d
+#   3. Interfaz web de correos simulados (Mailpit): http://localhost:8025
+
+name: app-maestria
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: app-maestria-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app_maestria}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app_maestria_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-app_maestria}
+      TZ: ${TZ:-America/Guayaquil}
+      PGTZ: ${TZ:-America/Guayaquil}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app_maestria} -d ${POSTGRES_DB:-app_maestria}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  mailpit:
+    image: axllent/mailpit:v1.21
+    container_name: app-maestria-mailpit
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-America/Guayaquil}
+      MP_MAX_MESSAGES: ${MAILPIT_MAX_MESSAGES:-500}
+    ports:
+      - "127.0.0.1:${MAILPIT_SMTP_PORT:-1025}:1025"
+      - "127.0.0.1:${MAILPIT_UI_PORT:-8025}:8025"
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  postgres_data:
+    name: app_maestria_postgres_data
