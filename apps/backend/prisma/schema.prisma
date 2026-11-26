@@ -1,0 +1,12 @@
+// Esquema inicial intencionalmente sin modelos.
+// El modelo de usuarios, roles, asignaciones y sesiones se incorporará
+// después de revisar sus cardinalidades y restricciones con el equipo.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
